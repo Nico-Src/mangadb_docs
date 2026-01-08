@@ -20,7 +20,7 @@ These commands use `rsync` to keep media files in sync between the local machine
 ```bash
 rsync -avz --progress \
 "LOCAL_PATH" \
-root@164.90.223.57:/root/mangadb_api/media/
+root@SERVER_IP:/root/mangadb_api/media/
 ```
 
 This command synchronizes the contents of ```LOCAL_PATH``` with the target directory on the server.
@@ -29,7 +29,7 @@ This command synchronizes the contents of ```LOCAL_PATH``` with the target direc
 
 ```bash
 rsync -avz --progress --delete \
-root@164.90.223.57:/root/mangadb_api/media/ \
+root@SERVER_IP:/root/mangadb_api/media/ \
 "LOCAL_PATH"
 ```
 

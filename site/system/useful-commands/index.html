@@ -361,12 +361,12 @@
 <h3 id="sync-from-local-to-server">Sync From Local to Server</h3>
 <pre class="hljs"><code>rsync -avz --progress \
 <span class="hljs-string">&quot;LOCAL_PATH&quot;</span> \
-root@164.90.223.57:/root/mangadb_api/media/
+root@SERVER_IP:/root/mangadb_api/media/
 </code></pre>
 <p>This command synchronizes the contents of <code>LOCAL_PATH</code> with the target directory on the server.</p>
 <h3 id="sync-from-server-to-local">Sync from Server to Local</h3>
 <pre class="hljs"><code>rsync -avz --progress --delete \
-root@164.90.223.57:/root/mangadb_api/media/ \
+root@SERVER_IP:/root/mangadb_api/media/ \
 <span class="hljs-string">&quot;LOCAL_PATH&quot;</span>
 </code></pre>
 <p>This command synchronizes the contents of a specified directory on the server to <code>LOCAL_PATH</code>.<br>
