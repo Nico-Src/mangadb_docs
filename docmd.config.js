@@ -1,15 +1,15 @@
 // docmd.config.js: basic config for docmd
 module.exports = {
   // Core Site Metadata
-  siteTitle: 'docmd',
+  siteTitle: 'MangaDB',
   // Define a base URL for your site, crucial for SEO and absolute paths
   // No trailing slash
   siteUrl: '', // Replace with your actual deployed URL
 
   // Logo Configuration
   logo: {
-    light: 'assets/images/docmd-logo-light.png', // Path relative to outputDir root
-    dark: 'assets/images/docmd-logo-dark.png',   // Path relative to outputDir root
+    light: 'assets/images/logo.png', // Path relative to outputDir root
+    dark: 'assets/images/logo-dark.png',   // Path relative to outputDir root
     alt: 'docmd logo',                      // Alt text for the logo
     href: './',                              // Link for the logo, defaults to site root
   },
@@ -38,7 +38,7 @@ module.exports = {
     positionMode: 'top', // 'top' or 'bottom' for the theme toggle
     codeHighlight: true,    // Enable/disable codeblock highlighting and import of highlight.js
     customCss: [            // Array of paths to custom CSS files
-      // 'assets/css/custom.css', // Custom TOC styles
+      'assets/css/custom-styles.css', // Paths relative to outputDir root
     ]
   },
 
@@ -60,7 +60,7 @@ module.exports = {
     // These are fallbacks or site-wide settings.
     seo: {
       // Default meta description if a page doesn't have one in its frontmatter
-      defaultDescription: 'docmd is a Node.js command-line tool for generating beautiful, lightweight static documentation sites from Markdown files.',
+      defaultDescription: 'Manga-DB Documentation - A comprehensive guide to using and developing with Manga-DB.',
       openGraph: { // For Facebook, LinkedIn, etc.
         // siteName: 'docmd Documentation', // Optional, defaults to config.siteTitle
         // Default image for og:image if not specified in page frontmatter
@@ -108,8 +108,13 @@ module.exports = {
       { title: 'Model Reference', collapsible: true, icon: 'book-open', children: [
         { title: 'User Model', path: '/model-reference/user-model/' },
       ] },
-      { title: 'API Docs', collapsible: true, icon: 'code', children: [
-        { title: 'Auth Routes', path: '/api-docs/auth-routes/' },
+      { title: 'API Docs', collapsible: true, path: '/api-docs/general', icon: 'code', children: [
+        { title: 'Auth', path: '/api-docs/auth-routes/', icon: 'lock' },
+        { title: 'User', path: '/api-docs/user-routes/', icon: 'user' },
+        { title: 'Admin Routes', collapsible: true, path: '/api-docs/admin-routes/', icon: 'shield', children: [
+          { title: 'System', path: '/api-docs/admin-routes/system-management/', icon: 'settings' },
+          { title: 'User', path: '/api-docs/admin-routes/user-management/', icon: 'users' },
+        ] },
       ] },
       // External links:
       { title: 'DigitalOcean', path: 'https://cloud.digitalocean.com/projects/870246cf-9dbb-4f2d-9b71-492827222a17/settings?i=bb1799', icon: 'waves', external: true },
@@ -133,5 +138,5 @@ module.exports = {
 
   // Favicon Configuration
   // Path relative to outputDir root
-  favicon: 'assets/favicon.ico',
+  favicon: 'assets/favicon.png',
 };

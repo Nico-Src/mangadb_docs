@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      <meta name="description" content="docmd is a Node.js command-line tool for generating beautiful, lightweight static documentation sites from Markdown files.">
+      <meta name="description" content="Manga-DB Documentation - A comprehensive guide to using and developing with Manga-DB.">
   <link rel="canonical" href="/api-docs/auth-routes/">
-  <meta property="og:title" content="Auth Routes | docmd">
-  <meta property="og:description" content="docmd is a Node.js command-line tool for generating beautiful, lightweight static documentation sites from Markdown files.">
+  <meta property="og:title" content="Auth Routes | MangaDB">
+  <meta property="og:description" content="Manga-DB Documentation - A comprehensive guide to using and developing with Manga-DB.">
   <meta property="og:url" content="/api-docs/auth-routes/">
-  <meta property="og:site_name" content="docmd">
+  <meta property="og:site_name" content="MangaDB">
   <meta property="og:image" content="/assets/images/docmd-preview.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Auth Routes | docmd">
-  <meta name="twitter:description" content="docmd is a Node.js command-line tool for generating beautiful, lightweight static documentation sites from Markdown files.">
+  <meta name="twitter:title" content="Auth Routes | MangaDB">
+  <meta name="twitter:description" content="Manga-DB Documentation - A comprehensive guide to using and developing with Manga-DB.">
   <meta name="twitter:image" content="/assets/images/docmd-preview.png">
  
 
-    <title>Auth Routes : docmd</title>
+    <title>Auth Routes : MangaDB</title>
     
 
-      <link rel="icon" href="../../assets/favicon.ico" type="image/x-icon" sizes="any">
-  <link rel="shortcut icon" href="../../assets/favicon.ico" type="image/x-icon">
+      <link rel="icon" href="../../assets/favicon.png" type="image/x-icon" sizes="any">
+  <link rel="shortcut icon" href="../../assets/favicon.png" type="image/x-icon">
  
 
     <!-- Define Default Mode (Variable for script) -->
@@ -41,6 +41,8 @@
       <link rel="stylesheet" href="../../assets/css/docmd-theme-sky.css">
  
 
+    
+      <link rel="stylesheet" href="../../assets/css/custom-styles.css">
     
 
      
@@ -95,8 +97,8 @@
         <div class="sidebar-header">
         
             <a href="./" class="logo-link">
-                <img src="../../assets/images/docmd-logo-light.png" alt="docmd logo" class="logo-light" >
-                <img src="../../assets/images/docmd-logo-dark.png" alt="docmd logo" class="logo-dark" >
+                <img src="../../assets/images/logo.png" alt="docmd logo" class="logo-light" >
+                <img src="../../assets/images/logo-dark.png" alt="docmd logo" class="logo-dark" >
             </a>
         
             <span class="mobile-view sidebar-menu-button float-right">
@@ -204,8 +206,8 @@
       
     </li>
     
-    <li class="active-parent collapsible" data-nav-id="undefined" aria-expanded="true">
-      <a href="#" class="" >
+    <li class="active-parent collapsible" data-nav-id="/api-docs/general" aria-expanded="true">
+      <a href="../../api-docs/general" class="" >
          <svg class="lucide-icon icon-code" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="m16 18 6-6-6-6" />
   <path d="m8 6-6 6 6 6" />
@@ -221,11 +223,73 @@
           
     <li class="active">
       <a href="../../api-docs/auth-routes/" class="active" >
-        
-        <span class="nav-item-title">Auth Routes</span>
+         <svg class="lucide-icon icon-lock" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+</svg> 
+        <span class="nav-item-title">Auth</span>
         
         
       </a>
+      
+    </li>
+    
+    <li class="">
+      <a href="../../api-docs/user-routes/" class="" >
+         <svg class="lucide-icon icon-user" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+  <circle cx="12" cy="7" r="4" />
+</svg> 
+        <span class="nav-item-title">User</span>
+        
+        
+      </a>
+      
+    </li>
+    
+    <li class="collapsible" data-nav-id="/api-docs/admin-routes/">
+      <a href="../../api-docs/admin-routes/" class="" >
+         <svg class="lucide-icon icon-shield" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+</svg> 
+        <span class="nav-item-title">Admin Routes</span>
+         <svg class="lucide-icon icon-chevron-right collapse-icon" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="m9 18 6-6-6-6" />
+</svg> 
+        
+      </a>
+      
+        <ul class="submenu" style="display: none;">
+          
+    <li class="">
+      <a href="../../api-docs/admin-routes/system-management/" class="" >
+         <svg class="lucide-icon icon-settings" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
+  <circle cx="12" cy="12" r="3" />
+</svg> 
+        <span class="nav-item-title">System</span>
+        
+        
+      </a>
+      
+    </li>
+    
+    <li class="">
+      <a href="../../api-docs/admin-routes/user-management/" class="" >
+         <svg class="lucide-icon icon-users" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <circle cx="9" cy="7" r="4" />
+</svg> 
+        <span class="nav-item-title">User</span>
+        
+        
+      </a>
+      
+    </li>
+    
+        </ul>
       
     </li>
     
@@ -354,7 +418,9 @@
                 <div class="main-content">
                     <h2 id="post-authlogin"><code>POST</code> /auth/login</h2>
 <p>Authenticates a user using a username and password, then issues JWT tokens for session management.</p>
-<h3 id="request-body">Request Body</h3>
+<div class="h3">Rate Limiting</div>
+<p>This endpoint is protected by rate limiting. After 10 failed login attempts within a 15-minute window (configurable in the backend), further attempts are temporarily blocked.</p>
+<div class="h3">Request Body</div>
 <p>The request body must be sent as JSON and include the following fields:</p>
 <div class="table-wrapper"><table>
 <thead>
@@ -380,13 +446,13 @@
 </tr>
 </tbody>
 </table>
-</div><h4 id="example">Example</h4>
+</div><div class="h4">Example</div>
 <pre class="hljs"><code><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">&quot;username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;exampleUser&quot;</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">&quot;password&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;securePassword123&quot;</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-<h3 id="responses">Responses</h3>
+<div class="h3">Responses</div>
 <details class="docmd-container collapsible" >
           <summary class="collapsible-summary">
             <span class="collapsible-title">200 OK</span>
@@ -446,9 +512,27 @@
 <p>Models used<br>
 <a href="../../model-reference/response-model/" class="btn btn-primary">Response Model</a></p>
 </div></details>
+<details class="docmd-container collapsible" >
+          <summary class="collapsible-summary">
+            <span class="collapsible-title">429 Too Many Requests</span>
+            <span class="collapsible-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="collapsible-content"><p>Returned when too many failed login attempts are made within a short period of time. The client is temporarily blocked from making further login requests.</p>
+<pre class="hljs"><code><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Too many requests.&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">429</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>Models used<br>
+<a href="../../model-reference/response-model/" class="btn btn-primary">Response Model</a></p>
+</div></details>
 <h2 id="post-authregister"><code>POST</code> /auth/register</h2>
 <p>Registers a new user account using a username and password.</p>
-<h3 id="request-body">Request Body</h3>
+<div class="h3">Rate Limiting</div>
+<p>This endpoint is protected by rate limiting. After 10 register attempts within a 1-hour window (configurable in the backend), further attempts are temporarily blocked.</p>
+<div class="h3">Request Body</div>
 <p>The request body must be sent as JSON and include the following fields:</p>
 <div class="table-wrapper"><table>
 <thead>
@@ -474,13 +558,14 @@
 </tr>
 </tbody>
 </table>
-</div><h4 id="example">Example</h4>
+</div><p>During registration, the backend validates both the username and password against rules defined in the backend configuration. The username must be a string that falls within the allowed length range and matches the permitted character set, ensuring only valid characters are accepted. The password is also validated to confirm it is a string and meets the configured length requirements. If any of these checks fail, the registration request is rejected with a validation error.</p>
+<div class="h4">Example</div>
 <pre class="hljs"><code><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">&quot;username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;new_user&quot;</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">&quot;password&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;strongPassword123&quot;</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
-<h3 id="responses">Responses</h3>
+<div class="h3">Responses</div>
 <details class="docmd-container collapsible" >
           <summary class="collapsible-summary">
             <span class="collapsible-title">201 Created</span>
@@ -552,6 +637,22 @@
 </div></details>
 <details class="docmd-container collapsible" >
           <summary class="collapsible-summary">
+            <span class="collapsible-title">429 Too Many Requests</span>
+            <span class="collapsible-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="collapsible-content"><p>Returned when too many failed register attempts are made within a short period of time. The client is temporarily blocked from making further register requests.</p>
+<pre class="hljs"><code><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Too many requests.&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">429</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>Models used<br>
+<a href="../../model-reference/response-model/" class="btn btn-primary">Response Model</a></p>
+</div></details>
+<details class="docmd-container collapsible" >
+          <summary class="collapsible-summary">
             <span class="collapsible-title">500 Internal Server Error</span>
             <span class="collapsible-arrow">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
@@ -559,12 +660,7 @@
           </summary>
           <div class="collapsible-content"><p>Returned when an internal error occurs during user creation or role assignment.</p>
 <pre class="hljs"><code><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Error creating user&quot;</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">500</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Error assigning role to user&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;User creation failed&quot;</span><span class="hljs-punctuation">,</span>
     <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">500</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
@@ -578,7 +674,7 @@
 </div></details>
 <h2 id="get-authme"><code>GET</code> /auth/me</h2>
 <p>Validates the current user session using a refresh token and returns the authenticated user context along with a newly issued access token.</p>
-<h3 id="authentication">Authentication</h3>
+<div class="h3">Authentication</div>
 <p>This endpoint uses the <strong>refresh token</strong> stored in cookies.</p>
 <div class="table-wrapper"><table>
 <thead>
@@ -597,7 +693,7 @@
 </tbody>
 </table>
 </div><hr>
-<h3 id="responses">Responses</h3>
+<div class="h3">Responses</div>
 <details class="docmd-container collapsible" >
           <summary class="collapsible-summary">
             <span class="collapsible-title">200 OK</span>
@@ -644,7 +740,7 @@
 </div></details>
 <h2 id="post-authlogout"><code>POST</code> /auth/logout</h2>
 <p>Logs out the currently authenticated user by invalidating the refresh token and clearing the authentication cookie.</p>
-<h3 id="authentication">Authentication</h3>
+<div class="h3">Authentication</div>
 <p>This endpoint uses the <strong>refresh token</strong> stored in cookies.</p>
 <div class="table-wrapper"><table>
 <thead>
@@ -663,7 +759,7 @@
 </tbody>
 </table>
 </div><hr>
-<h3 id="responses">Responses</h3>
+<div class="h3">Responses</div>
 <details class="docmd-container collapsible" >
           <summary class="collapsible-summary">
             <span class="collapsible-title">200 OK</span>
@@ -701,26 +797,35 @@
                     
                     <div class="page-navigation">
                         
-                        <a href="../../model-reference/user-model/" class="prev-page">
+                        <a href="../../api-docs/general/" class="prev-page">
                             <svg class="lucide-icon icon-arrow-left page-nav-icon" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="m12 19-7-7 7-7" />
   <path d="M19 12H5" />
 </svg>
                             <span>
                                 <small>Previous</small>
-                                <strong>User Model</strong>
+                                <strong>API Docs</strong>
                             </span>
                         </a>
                         
                         
                         
-                        <div class="next-page-placeholder"></div>
+                        <a href="../../api-docs/user-routes/" class="next-page">
+                            <span>
+                                <small>Next</small>
+                                <strong>User</strong>
+                            </span>
+                            <svg class="lucide-icon icon-arrow-right page-nav-icon" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" />
+</svg>
+                        </a>
                         
                     </div>
                     
                 </div>
                 
-                <!-- DEBUG: {"headingsLength":14} -->
+                <!-- DEBUG: {"headingsLength":4} -->
                 
                 <!-- TOC sidebar -->
                 <div class="toc-sidebar">
@@ -737,56 +842,16 @@
           <a href="#post-authlogin" class="toc-link">POST /auth/login</a>
         </li>
       
-        <li class="toc-item toc-level-3">
-          <a href="#request-body" class="toc-link">Request Body</a>
-        </li>
-      
-        <li class="toc-item toc-level-4">
-          <a href="#example" class="toc-link">Example</a>
-        </li>
-      
-        <li class="toc-item toc-level-3">
-          <a href="#responses" class="toc-link">Responses</a>
-        </li>
-      
         <li class="toc-item toc-level-2">
           <a href="#post-authregister" class="toc-link">POST /auth/register</a>
-        </li>
-      
-        <li class="toc-item toc-level-3">
-          <a href="#request-body" class="toc-link">Request Body</a>
-        </li>
-      
-        <li class="toc-item toc-level-4">
-          <a href="#example" class="toc-link">Example</a>
-        </li>
-      
-        <li class="toc-item toc-level-3">
-          <a href="#responses" class="toc-link">Responses</a>
         </li>
       
         <li class="toc-item toc-level-2">
           <a href="#get-authme" class="toc-link">GET /auth/me</a>
         </li>
       
-        <li class="toc-item toc-level-3">
-          <a href="#authentication" class="toc-link">Authentication</a>
-        </li>
-      
-        <li class="toc-item toc-level-3">
-          <a href="#responses" class="toc-link">Responses</a>
-        </li>
-      
         <li class="toc-item toc-level-2">
           <a href="#post-authlogout" class="toc-link">POST /auth/logout</a>
-        </li>
-      
-        <li class="toc-item toc-level-3">
-          <a href="#authentication" class="toc-link">Authentication</a>
-        </li>
-      
-        <li class="toc-item toc-level-3">
-          <a href="#responses" class="toc-link">Responses</a>
         </li>
       
     </ul>

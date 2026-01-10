@@ -6,7 +6,12 @@ description: ""
 ## `POST` /auth/login
 
 Authenticates a user using a username and password, then issues JWT tokens for session management.
-### Request Body
+
+<div class="h3">Rate Limiting</div>
+
+This endpoint is protected by rate limiting. After 10 failed login attempts within a 15-minute window (configurable in the backend), further attempts are temporarily blocked.
+
+<div class="h3">Request Body</div>
 
 The request body must be sent as JSON and include the following fields:
 
@@ -15,7 +20,7 @@ The request body must be sent as JSON and include the following fields:
 | username  | string | Yes      | The user’s username             |
 | password  | string | Yes      | The user’s plain-text password  |
 
-#### Example
+<div class="h4">Example</div>
 
 ```json
 {
@@ -24,7 +29,7 @@ The request body must be sent as JSON and include the following fields:
 }
 ```
 
-### Responses
+<div class="h3">Responses</div>
 
 ::: collapsible 200 OK
 Returned when the user is authenticated successfully.
@@ -76,11 +81,28 @@ Models used
 [Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
+::: collapsible 429 Too Many Requests
+Returned when too many failed login attempts are made within a short period of time. The client is temporarily blocked from making further login requests.
+
+```json
+{
+    "data": "Too many requests.",
+    "code": 429
+}
+```
+Models used
+[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+:::
+
 ## `POST` /auth/register
 
 Registers a new user account using a username and password.
 
-### Request Body
+<div class="h3">Rate Limiting</div>
+
+This endpoint is protected by rate limiting. After 10 register attempts within a 1-hour window (configurable in the backend), further attempts are temporarily blocked.
+
+<div class="h3">Request Body</div>
 
 The request body must be sent as JSON and include the following fields:
 
@@ -89,7 +111,9 @@ The request body must be sent as JSON and include the following fields:
 | username  | string | Yes      | Desired username               |
 | password  | string | Yes      | Plain-text account password    |
 
-#### Example
+During registration, the backend validates both the username and password against rules defined in the backend configuration. The username must be a string that falls within the allowed length range and matches the permitted character set, ensuring only valid characters are accepted. The password is also validated to confirm it is a string and meets the configured length requirements. If any of these checks fail, the registration request is rejected with a validation error.
+
+<div class="h4">Example</div>
 
 ```json
 {
@@ -98,7 +122,7 @@ The request body must be sent as JSON and include the following fields:
 }
 ```
 
-### Responses
+<div class="h3">Responses</div>
 
 ::: collapsible 201 Created
 Returned when the user account is created successfully.
@@ -159,19 +183,25 @@ Models used
 [Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
+::: collapsible 429 Too Many Requests
+Returned when too many failed register attempts are made within a short period of time. The client is temporarily blocked from making further register requests.
+
+```json
+{
+    "data": "Too many requests.",
+    "code": 429
+}
+```
+Models used
+[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+:::
+
 ::: collapsible 500 Internal Server Error
 Returned when an internal error occurs during user creation or role assignment.
 
 ```json
 {
-    "data": "Error creating user",
-    "code": 500
-}
-```
-
-```json
-{
-    "data": "Error assigning role to user",
+    "data": "User creation failed",
     "code": 500
 }
 ```
@@ -190,7 +220,7 @@ Models used
 
 Validates the current user session using a refresh token and returns the authenticated user context along with a newly issued access token.
 
-### Authentication
+<div class="h3">Authentication</div>
 
 This endpoint uses the **refresh token** stored in cookies.
 
@@ -200,7 +230,7 @@ This endpoint uses the **refresh token** stored in cookies.
 
 ---
 
-### Responses
+<div class="h3">Responses</div>
 
 ::: collapsible 200 OK
 Returned when the user is authenticated successfully and the session is valid.
@@ -244,7 +274,7 @@ Models used
 
 Logs out the currently authenticated user by invalidating the refresh token and clearing the authentication cookie.
 
-### Authentication
+<div class="h3">Authentication</div>
 
 This endpoint uses the **refresh token** stored in cookies.
 
@@ -254,7 +284,7 @@ This endpoint uses the **refresh token** stored in cookies.
 
 ---
 
-### Responses
+<div class="h3">Responses</div>
 
 ::: collapsible 200 OK
 Returned when the user is logged out successfully.

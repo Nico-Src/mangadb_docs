@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
       <meta name="description" content="Manga-DB Documentation - A comprehensive guide to using and developing with Manga-DB.">
-  <link rel="canonical" href="/model-reference/user-model/">
-  <meta property="og:title" content="User Model | MangaDB">
+  <link rel="canonical" href="/api-docs/general/">
+  <meta property="og:title" content="General | MangaDB">
   <meta property="og:description" content="Manga-DB Documentation - A comprehensive guide to using and developing with Manga-DB.">
-  <meta property="og:url" content="/model-reference/user-model/">
+  <meta property="og:url" content="/api-docs/general/">
   <meta property="og:site_name" content="MangaDB">
   <meta property="og:image" content="/assets/images/docmd-preview.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="User Model | MangaDB">
+  <meta name="twitter:title" content="General | MangaDB">
   <meta name="twitter:description" content="Manga-DB Documentation - A comprehensive guide to using and developing with Manga-DB.">
   <meta name="twitter:image" content="/assets/images/docmd-preview.png">
  
 
-    <title>User Model : MangaDB</title>
+    <title>General : MangaDB</title>
     
 
       <link rel="icon" href="../../assets/favicon.png" type="image/x-icon" sizes="any">
@@ -177,7 +177,7 @@
       
     </li>
     
-    <li class="active-parent collapsible" data-nav-id="undefined" aria-expanded="true">
+    <li class="collapsible" data-nav-id="undefined">
       <a href="#" class="" >
          <svg class="lucide-icon icon-book-open" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M12 7v14" />
@@ -190,10 +190,10 @@
         
       </a>
       
-        <ul class="submenu" style="display: block;">
+        <ul class="submenu" style="display: none;">
           
-    <li class="active">
-      <a href="../../model-reference/user-model/" class="active" >
+    <li class="">
+      <a href="../../model-reference/user-model/" class="" >
         
         <span class="nav-item-title">User Model</span>
         
@@ -206,8 +206,8 @@
       
     </li>
     
-    <li class="collapsible" data-nav-id="/api-docs/general">
-      <a href="../../api-docs/general" class="" >
+    <li class="active collapsible" data-nav-id="/api-docs/general" aria-expanded="true">
+      <a href="../../api-docs/general" class="active" >
          <svg class="lucide-icon icon-code" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="m16 18 6-6-6-6" />
   <path d="m8 6-6 6 6 6" />
@@ -219,7 +219,7 @@
         
       </a>
       
-        <ul class="submenu" style="display: none;">
+        <ul class="submenu" style="display: block;">
           
     <li class="">
       <a href="../../api-docs/auth-routes/" class="" >
@@ -380,7 +380,7 @@
 </svg>
                 </button>
                 
-                <h1>User Model</h1>
+                <h1>General</h1>
             </div>
             
             <div class="header-right">
@@ -416,28 +416,34 @@
         <main class="content-area">
             <div class="content-layout">
                 <div class="main-content">
-                    
+                    <h1 id="api-documentation">API Documentation</h1>
+<p>This section documents the available API endpoints and their expected behavior, request formats, and responses. All protected routes are secured using a centralized authentication middleware that validates access tokens and enforces permission-based authorization.</p>
+<h2 id="authentication-authorization-middleware">Authentication &amp; Authorization Middleware</h2>
+<p>The API uses a middleware layer to protect routes and control access based on authentication state and permissions. For protected endpoints, an access token is extracted from the incoming request and validated using JWT verification. If the token is valid, the decoded user context is attached to the request and made available to downstream handlers.</p>
+<p>Some routes require only a valid authenticated session, while others additionally enforce specific permissions. In those cases, the middleware verifies that the authenticated user possesses all required permissions before allowing the request to proceed. Requests that fail authentication or authorization checks are rejected with the appropriate HTTP status code.</p>
+<p>After this section, each route is documented individually, including its authentication requirements, expected inputs, and possible responses.</p>
+
                     
                     
                     <div class="page-navigation">
                         
-                        <a href="../../system/useful-commands/" class="prev-page">
+                        <a href="../../model-reference/user-model/" class="prev-page">
                             <svg class="lucide-icon icon-arrow-left page-nav-icon" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="m12 19-7-7 7-7" />
   <path d="M19 12H5" />
 </svg>
                             <span>
                                 <small>Previous</small>
-                                <strong>Useful Commands</strong>
+                                <strong>User Model</strong>
                             </span>
                         </a>
                         
                         
                         
-                        <a href="../../api-docs/general/" class="next-page">
+                        <a href="../../api-docs/auth-routes/" class="next-page">
                             <span>
                                 <small>Next</small>
-                                <strong>API Docs</strong>
+                                <strong>Auth</strong>
                             </span>
                             <svg class="lucide-icon icon-arrow-right page-nav-icon" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M5 12h14" />
@@ -449,7 +455,7 @@
                     
                 </div>
                 
-                <!-- DEBUG: {"headingsLength":0} -->
+                <!-- DEBUG: {"headingsLength":2} -->
                 
                 <!-- TOC sidebar -->
                 <div class="toc-sidebar">
