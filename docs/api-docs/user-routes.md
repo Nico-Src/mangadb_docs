@@ -1041,7 +1041,7 @@ Models used
 
 ## `POST` /user/update-image/:id
 
-Updates the profile image of a user. A user may update their own profile image, while administrators may update profile images for other users using the `/admin` route. Existing locally stored profile images are removed before saving the new one.
+Updates the profile image of a user. A user may update their own profile image, while administrators may update profile images for other users using the [/admin](/api-docs/admin-routes/user-management/index.html#post-admin-usersupdate-imageid){.btn .btn-primary} route. Existing locally stored profile images are removed before saving the new one.
 
 <div class="h3">Authentication</div>
 

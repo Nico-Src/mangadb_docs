@@ -103,17 +103,23 @@ module.exports = {
       { title: 'Welcome', path: '/', icon: 'home' },
       { title: 'System', collapsible: true, icon: 'cpu', children: [
         { title: 'Architecture', path: '/system/architecture/' },
-        { title: 'Useful Commands', path: '/system/useful-commands/' },
       ] },
       { title: 'Model Reference', collapsible: true, icon: 'book-open', children: [
         { title: 'User Model', path: '/model-reference/user-model/' },
       ] },
       { title: 'API Docs', collapsible: true, path: '/api-docs/general', icon: 'code', children: [
+        { title: 'Middleware', path: '/api-docs/middleware/', icon: 'layers' },
+        { title: 'CDN', path: '/api-docs/cdn-routes/', icon: 'cloud-rain' },
         { title: 'Auth', path: '/api-docs/auth-routes/', icon: 'lock' },
         { title: 'User', path: '/api-docs/user-routes/', icon: 'user' },
+        { title: 'Lists', path: '/api-docs/list-routes/', icon: 'list' },
+        { title: 'Tags', path: '/api-docs/tag-routes/', icon: 'tag' },
+        { title: 'Reports', path: '/api-docs/report-routes/', icon: 'flag' },
+        { title: 'Series', path: '/api-docs/series-routes/', icon: 'book' },
         { title: 'Admin Routes', collapsible: true, path: '/api-docs/admin-routes/', icon: 'shield', children: [
           { title: 'System', path: '/api-docs/admin-routes/system-management/', icon: 'settings' },
           { title: 'User', path: '/api-docs/admin-routes/user-management/', icon: 'users' },
+          { title: 'Series', path: '/api-docs/admin-routes/series-management/', icon: 'book-open' },
         ] },
       ] },
       // External links:

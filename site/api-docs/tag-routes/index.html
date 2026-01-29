@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      <meta name="description" content="System Architecture">
-  <link rel="canonical" href="/system/architecture/">
-  <meta property="og:title" content="Architecture | MangaDB">
-  <meta property="og:description" content="System Architecture">
-  <meta property="og:url" content="/system/architecture/">
+      <meta name="description" content="Manga-DB Documentation - A comprehensive guide to using and developing with Manga-DB.">
+  <link rel="canonical" href="/api-docs/tag-routes/">
+  <meta property="og:title" content="Tag-Routes | MangaDB">
+  <meta property="og:description" content="Manga-DB Documentation - A comprehensive guide to using and developing with Manga-DB.">
+  <meta property="og:url" content="/api-docs/tag-routes/">
   <meta property="og:site_name" content="MangaDB">
   <meta property="og:image" content="/assets/images/docmd-preview.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Architecture | MangaDB">
-  <meta name="twitter:description" content="System Architecture">
+  <meta name="twitter:title" content="Tag-Routes | MangaDB">
+  <meta name="twitter:description" content="Manga-DB Documentation - A comprehensive guide to using and developing with Manga-DB.">
   <meta name="twitter:image" content="/assets/images/docmd-preview.png">
  
 
-    <title>Architecture : MangaDB</title>
+    <title>Tag-Routes : MangaDB</title>
     
 
       <link rel="icon" href="../../assets/favicon.png" type="image/x-icon" sizes="any">
@@ -126,7 +126,7 @@
       
     </li>
     
-    <li class="active-parent collapsible" data-nav-id="undefined" aria-expanded="true">
+    <li class="collapsible" data-nav-id="undefined">
       <a href="#" class="" >
          <svg class="lucide-icon icon-cpu" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M12 20v2" />
@@ -151,10 +151,10 @@
         
       </a>
       
-        <ul class="submenu" style="display: block;">
+        <ul class="submenu" style="display: none;">
           
-    <li class="active">
-      <a href="../../system/architecture/" class="active" >
+    <li class="">
+      <a href="../../system/architecture/" class="" >
         
         <span class="nav-item-title">Architecture</span>
         
@@ -196,7 +196,7 @@
       
     </li>
     
-    <li class="collapsible" data-nav-id="/api-docs/general">
+    <li class="active-parent collapsible" data-nav-id="/api-docs/general" aria-expanded="true">
       <a href="../../api-docs/general" class="" >
          <svg class="lucide-icon icon-code" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="m16 18 6-6-6-6" />
@@ -209,7 +209,7 @@
         
       </a>
       
-        <ul class="submenu" style="display: none;">
+        <ul class="submenu" style="display: block;">
           
     <li class="">
       <a href="../../api-docs/middleware/" class="" >
@@ -283,8 +283,8 @@
       
     </li>
     
-    <li class="">
-      <a href="../../api-docs/tag-routes/" class="" >
+    <li class="active">
+      <a href="../../api-docs/tag-routes/" class="active" >
          <svg class="lucide-icon icon-tag" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z" />
   <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" />
@@ -466,7 +466,7 @@
 </svg>
                 </button>
                 
-                <h1>Architecture</h1>
+                <h1>Tag-Routes</h1>
             </div>
             
             <div class="header-right">
@@ -502,97 +502,163 @@
         <main class="content-area">
             <div class="content-layout">
                 <div class="main-content">
-                    <h1 id="architecture">Architecture</h1>
-<h2 id="diagram">Diagram</h2>
-<pre class="mermaid">graph TD
-    U[User / Browser]
-
-    U --&gt;|HTTPS| FE[Frontend&lt;br/&gt;Cloudflare Pages&lt;br/&gt;manga-db.org]
-
-    FE --&gt;|API Requests| API[Backend API&lt;br/&gt;Node.js&lt;br/&gt;api.manga-db.org]
-    FE --&gt;|Media Requests| CDN[CDN Service&lt;br/&gt;Node.js&lt;br/&gt;cdn.manga-db.org]
-    FE --&gt;|IO Operations| IO[IO Service&lt;br/&gt;Node.js&lt;br/&gt;io.manga-db.org]
-
-    API --&gt;|Cache Busting| CDN
-</pre>
-<h2 id="technology-stack-overview">Technology Stack Overview</h2>
-<p>This section describes the main technologies used across the system and how they relate to each component.</p>
-<hr>
-<h3 id="frontend">Frontend</h3>
-<p>The frontend is built using <strong>Nuxt</strong> and runs on <strong>Cloudflare Pages</strong>.</p>
-<ul>
-<li><strong>Framework:</strong> Nuxt <code>4.1.1</code></li>
-<li><strong>Server Engine:</strong> Nitro <code>2.12.5</code></li>
-<li><strong>Role:</strong>
-<ul>
-<li>Renders the user-facing application</li>
-<li>Communicates with backend services over HTTPS</li>
-<li>Requests media and assets from the CDN service</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="backend-services">Backend Services</h3>
-<p>All backend services are implemented as <strong>Node.js applications</strong>.</p>
-<ul>
-<li><strong>Runtime:</strong> Node.js <code>16.5.0</code></li>
-<li><strong>Services include:</strong>
-<ul>
-<li>Backend API (<code>api.manga-db.org</code>)</li>
-<li>CDN service (<code>cdn.manga-db.org</code>)</li>
-<li>IO service (<code>io.manga-db.org</code>)</li>
-</ul>
-</li>
-</ul>
-<p><strong>Responsibilities:</strong></p>
-<ul>
-<li>Handle business logic and request orchestration</li>
-<li>Serve and manage media assets</li>
-<li>Perform file and I/O-related operations</li>
-</ul>
-<hr>
-<h3 id="database">Database</h3>
-<p>The system uses <strong>MariaDB</strong> as its relational database.</p>
-<ul>
-<li><strong>Database Engine:</strong> MariaDB <code>10.4</code></li>
-<li><strong>Usage:</strong>
-<ul>
-<li>Stores application data and metadata</li>
-<li>Accessed primarily by the backend API</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="technology-relationships">Technology Relationships</h3>
-<ul>
-<li>The <strong>Nuxt frontend</strong> communicates with backend Node.js services via HTTPS.</li>
-<li><strong>Node.js services</strong> interact with the MariaDB database for persistent storage.</li>
-<li>Media and file operations are handled through dedicated backend services to keep concerns separated.</li>
-</ul>
-<hr>
-<p>This separation of technologies and responsibilities helps keep the system modular, scalable, and easier to maintain.</p>
+                    <h2 id="get-tags"><code>GET</code> /tags</h2>
+<p>Returns all tags available for a specific client. This endpoint is publicly accessible and does not require authentication.</p>
+<div class="h3">Authentication</div>
+<p>This endpoint does <strong>not</strong> require authentication.</p>
+<div class="h3">Query Parameters</div>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>client</td>
+<td>number</td>
+<td>Yes</td>
+<td>—</td>
+<td>Client identifier</td>
+</tr>
+</tbody>
+</table>
+</div><div class="h3">Responses</div>
+<details class="docmd-container collapsible" >
+          <summary class="collapsible-summary">
+            <span class="collapsible-title">200 OK</span>
+            <span class="collapsible-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="collapsible-content"><p>Returned when the tags are retrieved successfully.</p>
+<pre class="hljs"><code><span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;number&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;string&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;string&quot;</span>
+    <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">]</span>
+</code></pre>
+<p>Models used<br>
+<a href="../../model-reference/tag-model/" class="btn btn-primary">Tag Model</a></p>
+</div></details>
+<details class="docmd-container collapsible" >
+          <summary class="collapsible-summary">
+            <span class="collapsible-title">400 Bad Request</span>
+            <span class="collapsible-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="collapsible-content"><p>Returned when the required client parameter is missing.</p>
+<pre class="hljs"><code><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Required parameters missing&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">400</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>Models used<br>
+<a href="../../model-reference/response-model/" class="btn btn-primary">Response Model</a></p>
+</div></details>
+<h2 id="get-tagsidid"><code>GET</code> /tags/id/:id</h2>
+<p>Returns detailed information for a specific tag, including how many series are associated with it.</p>
+<div class="h3">Authentication</div>
+<p>This endpoint does <strong>not</strong> require authentication.</p>
+<div class="h3">Path Parameters</div>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>Yes</td>
+<td>Identifier of the tag</td>
+</tr>
+</tbody>
+</table>
+</div><div class="h3">Responses</div>
+<details class="docmd-container collapsible" >
+          <summary class="collapsible-summary">
+            <span class="collapsible-title">200 OK</span>
+            <span class="collapsible-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="collapsible-content"><p>Returned when the tag data is retrieved successfully.</p>
+<pre class="hljs"><code><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;number&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;string&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;string&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;series_count&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;number&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>Models used<br>
+<a href="../../model-reference/tag-model/" class="btn btn-primary">Tag Model</a></p>
+</div></details>
+<details class="docmd-container collapsible" >
+          <summary class="collapsible-summary">
+            <span class="collapsible-title">400 Bad Request</span>
+            <span class="collapsible-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="collapsible-content"><p>Returned when required parameters are missing.</p>
+<pre class="hljs"><code><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Required parameters missing&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">400</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>Models used<br>
+<a href="../../model-reference/response-model/" class="btn btn-primary">Response Model</a></p>
+</div></details>
+<details class="docmd-container collapsible" >
+          <summary class="collapsible-summary">
+            <span class="collapsible-title">404 Not Found</span>
+            <span class="collapsible-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+          </summary>
+          <div class="collapsible-content"><p>Returned when the specified tag cannot be found.</p>
+<pre class="hljs"><code><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Tag not found&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">404</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>Models used<br>
+<a href="../../model-reference/response-model/" class="btn btn-primary">Response Model</a></p>
+</div></details>
 
                     
                     
                     <div class="page-navigation">
                         
-                        <a href="../../" class="prev-page">
+                        <a href="../../api-docs/list-routes/" class="prev-page">
                             <svg class="lucide-icon icon-arrow-left page-nav-icon" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="m12 19-7-7 7-7" />
   <path d="M19 12H5" />
 </svg>
                             <span>
                                 <small>Previous</small>
-                                <strong>Welcome</strong>
+                                <strong>Lists</strong>
                             </span>
                         </a>
                         
                         
                         
-                        <a href="../../model-reference/user-model/" class="next-page">
+                        <a href="../../api-docs/report-routes/" class="next-page">
                             <span>
                                 <small>Next</small>
-                                <strong>User Model</strong>
+                                <strong>Reports</strong>
                             </span>
                             <svg class="lucide-icon icon-arrow-right page-nav-icon" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M5 12h14" />
@@ -604,7 +670,7 @@
                     
                 </div>
                 
-                <!-- DEBUG: {"headingsLength":7} -->
+                <!-- DEBUG: {"headingsLength":2} -->
                 
                 <!-- TOC sidebar -->
                 <div class="toc-sidebar">
@@ -618,27 +684,11 @@
     <ul class="toc-list">
       
         <li class="toc-item toc-level-2">
-          <a href="#diagram" class="toc-link">Diagram</a>
+          <a href="#get-tags" class="toc-link">GET /tags</a>
         </li>
       
         <li class="toc-item toc-level-2">
-          <a href="#technology-stack-overview" class="toc-link">Technology Stack Overview</a>
-        </li>
-      
-        <li class="toc-item toc-level-3">
-          <a href="#frontend" class="toc-link">Frontend</a>
-        </li>
-      
-        <li class="toc-item toc-level-3">
-          <a href="#backend-services" class="toc-link">Backend Services</a>
-        </li>
-      
-        <li class="toc-item toc-level-3">
-          <a href="#database" class="toc-link">Database</a>
-        </li>
-      
-        <li class="toc-item toc-level-3">
-          <a href="#technology-relationships" class="toc-link">Technology Relationships</a>
+          <a href="#get-tagsidid" class="toc-link">GET /tags/id/:id</a>
         </li>
       
     </ul>

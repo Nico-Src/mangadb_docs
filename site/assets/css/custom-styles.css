@@ -46,3 +46,18 @@ table{
     justify-content: center;
     color: var(--sidebar-link-active-text) !important;
 }
+
+[id^="delete"] code{
+    background-color: rgb(168, 82, 82) !important;
+    color: white !important;
+}
+
+[id^="post"] code{
+    background-color: rgb(82, 168, 104) !important;
+    color: white !important;
+}
+
+[id^="get"] code{
+    background-color: rgb(129, 82, 168) !important;
+    color: white !important;
+}
