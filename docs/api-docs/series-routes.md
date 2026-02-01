@@ -220,7 +220,6 @@ Models used
 [Series Model](../../model-reference/series-model/index.html){.btn .btn-primary}
 [Volume Model](../../model-reference/volume-model/index.html){.btn .btn-primary}
 [Publisher Model](../../model-reference/publisher-model/index.html){.btn .btn-primary}
-[Publisher Edition Model](../../model-reference/publisher-edition-model/index.html){.btn .btn-primary}
 [Contributor Model](../../model-reference/contributor-model/index.html){.btn .btn-primary}
 [Tag Model](../../model-reference/tag-model/index.html){.btn .btn-primary}
 :::

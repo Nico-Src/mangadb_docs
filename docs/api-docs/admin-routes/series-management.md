@@ -61,7 +61,7 @@ This endpoint requires authentication via a **refresh token** stored in cookies 
 }
 ```
 Models used
-[Series Model](../../model-reference/series-model/index.html){.btn .btn-primary}
+[Series Model](../../../model-reference/series-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -74,7 +74,7 @@ Returned when required parameters are missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## `GET` /admin-series/id/:id
@@ -123,12 +123,11 @@ Returned when the series is found and the admin has sufficient permissions.
 }
 ```
 Models used
-[Series Model](../../model-reference/series-model/index.html){.btn .btn-primary}
-[Volume Model](../../model-reference/volume-model/index.html){.btn .btn-primary}
-[Publisher Model](../../model-reference/publisher-model/index.html){.btn .btn-primary}
-[Publisher Edition Model](../../model-reference/publisher-edition-model/index.html){.btn .btn-primary}
-[Contributor Model](../../model-reference/contributor-model/index.html){.btn .btn-primary}
-[Tag Model](../../model-reference/tag-model/index.html){.btn .btn-primary}
+[Series Model](../../../model-reference/series-model/index.html){.btn .btn-primary}
+[Volume Model](../../../model-reference/volume-model/index.html){.btn .btn-primary}
+[Publisher Model](../../../model-reference/publisher-model/index.html){.btn .btn-primary}
+[Contributor Model](../../../model-reference/contributor-model/index.html){.btn .btn-primary}
+[Tag Model](../../../model-reference/tag-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -141,7 +140,7 @@ Returned when the series ID is missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 404 Not Found
@@ -154,7 +153,7 @@ Returned when the series does not exist.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## `POST` /admin-series/regen-slug/:id
@@ -189,7 +188,7 @@ Returned when the slug is regenerated successfully.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -202,7 +201,7 @@ Returned when the series ID is missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 404 Not Found
@@ -215,7 +214,7 @@ Returned when the series does not exist.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 500 Internal Server Error
@@ -228,7 +227,7 @@ Returned when an unexpected error occurs while regenerating the slug.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## `POST` /admin-series/edit/:id
@@ -291,7 +290,7 @@ Returned when the series and all related entities are updated successfully.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -304,7 +303,7 @@ Returned when required parameters are missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 404 Not Found
@@ -317,7 +316,7 @@ Returned when the series does not exist.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 500 Internal Server Error
@@ -330,7 +329,7 @@ Returned when an unexpected error occurs while editing the series.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## `POST` /admin-series/move/:id
@@ -371,7 +370,7 @@ Returned when the series is moved to the new client successfully.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -384,7 +383,7 @@ Returned when required parameters are missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 404 Not Found
@@ -397,7 +396,7 @@ Returned when the series does not exist.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 500 Internal Server Error
@@ -410,7 +409,7 @@ Returned when an unexpected error occurs while moving the series.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## `POST` /admin-series/add
@@ -447,7 +446,7 @@ Returned when the series is created successfully.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -460,7 +459,7 @@ Returned when required parameters are missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 409 Conflict
@@ -473,7 +472,7 @@ Returned when a series with the same name and type already exists for the client
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 500 Internal Server Error
@@ -486,7 +485,7 @@ Returned when an unexpected error occurs while creating the series.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## `DELETE` /admin-series/delete/:id
@@ -521,7 +520,7 @@ Returned when the series and all related data are deleted successfully.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -534,7 +533,7 @@ Returned when the series ID is missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 404 Not Found
@@ -547,7 +546,7 @@ Returned when the series does not exist.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 500 Internal Server Error
@@ -560,5 +559,5 @@ Returned when an unexpected error occurs while deleting the series.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::

@@ -68,8 +68,8 @@ Returned when the users are retrieved successfully.
 }
 ```
 Models used
-[User Model](../../model-reference/user-model/index.html){.btn .btn-primary}
-[Role Model](../../model-reference/role-model/index.html){.btn .btn-primary}
+[User Model](../../../model-reference/user-model/index.html){.btn .btn-primary}
+[Role Model](../../../model-reference/role-model/index.html){.btn .btn-primary}
 :::
 
 ## `GET` /admin-users/id/:id
@@ -116,8 +116,8 @@ Returned when the user is retrieved successfully.
 }
 ```
 Models used
-[User Model](../../model-reference/user-model/index.html){.btn .btn-primary}
-[Role Model](../../model-reference/role-model/index.html){.btn .btn-primary}
+[User Model](../../../model-reference/user-model/index.html){.btn .btn-primary}
+[Role Model](../../../model-reference/role-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -130,7 +130,7 @@ Returned when required parameters are missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 404 Not Found
@@ -143,7 +143,7 @@ Returned when the authenticated user or the requested user cannot be found.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## `POST` /admin-users/edit/:id
@@ -187,7 +187,7 @@ Returned when the user is updated successfully.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -200,7 +200,7 @@ Returned when required parameters are missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 404 Not Found
@@ -213,7 +213,7 @@ Returned when the authenticated user cannot be found.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 409 Conflict
@@ -226,7 +226,7 @@ Returned when the specified username is already taken.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 500 Internal Server Error
@@ -239,7 +239,7 @@ Returned when an unexpected error occurs while editing the user.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## `DELETE` /admin-users/delete/:id
@@ -274,7 +274,7 @@ Returned when the user and all associated data are deleted successfully.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -287,7 +287,7 @@ Returned when required parameters are missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 404 Not Found
@@ -300,7 +300,7 @@ Returned when the authenticated admin user or the target user cannot be found.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 500 Internal Server Error
@@ -313,7 +313,7 @@ Returned when an unexpected error occurs while deleting the user.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## `POST` /admin-users/logout/:id
@@ -348,7 +348,7 @@ Returned when the user is logged out successfully.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -361,7 +361,7 @@ Returned when required parameters are missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 404 Not Found
@@ -374,7 +374,7 @@ Returned when the authenticated admin user or the target user cannot be found.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 500 Internal Server Error
@@ -387,7 +387,7 @@ Returned when an unexpected error occurs while logging out the user.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## `POST` /admin-users/update-image/:id
@@ -430,7 +430,7 @@ Returned when the profile image is updated successfully.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -443,7 +443,7 @@ Returned when required parameters are missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 404 Not Found
@@ -456,7 +456,7 @@ Returned when the authenticated user cannot be found.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 500 Internal Server Error
@@ -469,7 +469,7 @@ Returned when an unexpected error occurs while updating the profile image.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 503 Service Unavailable
@@ -482,7 +482,7 @@ Returned when the current service is not configured to handle file operations (W
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## `DELETE` /admin-users/delete-image/:id
@@ -517,7 +517,7 @@ Returned when the profile image is deleted successfully.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -530,7 +530,7 @@ Returned when required parameters are missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 404 Not Found
@@ -543,7 +543,7 @@ Returned when the authenticated user cannot be found.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 500 Internal Server Error
@@ -556,7 +556,7 @@ Returned when the user has no profile image or an unexpected error occurs.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 503 Service Unavailable
@@ -569,7 +569,7 @@ Returned when the current service is not configured to handle file operations (W
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## --- Roles --- {.category-title data-category="Roles"}
@@ -605,7 +605,7 @@ Returned when the roles are retrieved successfully.
 ]
 ```
 Models used
-[Role Model](../../model-reference/role-model/index.html){.btn .btn-primary}
+[Role Model](../../../model-reference/role-model/index.html){.btn .btn-primary}
 :::
 
 ## `GET` /admin-roles/id/:id
@@ -647,8 +647,8 @@ Returned when the role is retrieved successfully.
 }
 ```
 Models used
-[Role Model](../../model-reference/role-model/index.html){.btn .btn-primary}
-[Permission Model](../../model-reference/permission-model/index.html){.btn .btn-primary}
+[Role Model](../../../model-reference/role-model/index.html){.btn .btn-primary}
+[Permission Model](../../../model-reference/permission-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -661,7 +661,7 @@ Returned when required parameters are missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 404 Not Found
@@ -674,7 +674,7 @@ Returned when the specified role cannot be found.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## `POST` /admin-roles/edit/:id
@@ -718,7 +718,7 @@ Returned when the role is updated successfully.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -731,7 +731,7 @@ Returned when required parameters are missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 
@@ -745,7 +745,7 @@ Returned when a role with the same name already exists.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 500 Internal Server Error
@@ -758,7 +758,7 @@ Returned when an unexpected error occurs while updating the role.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## `POST` /admin-roles/add
@@ -794,7 +794,7 @@ Returned when the role is added successfully.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -807,7 +807,7 @@ Returned when required parameters are missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 409 Conflict
@@ -820,7 +820,7 @@ Returned when a role with the same name already exists.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 500 Internal Server Error
@@ -833,7 +833,7 @@ Returned when an unexpected error occurs while adding the role.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## `DELETE` /admin-roles/delete/:id
@@ -868,7 +868,7 @@ Returned when the role is deleted successfully.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -881,7 +881,7 @@ Returned when required parameters are missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 405 Method Not Allowed
@@ -894,7 +894,7 @@ Returned when attempting to delete the default role.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 500 Internal Server Error
@@ -907,7 +907,7 @@ Returned when an unexpected error occurs while deleting the role or when the def
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## --- Permissions --- {.category-title data-category="Permissions"}
@@ -941,7 +941,7 @@ Returned when the permissions are retrieved successfully.
 ]
 ```
 Models used
-[Permission Model](../../model-reference/permission-model/index.html){.btn .btn-primary}
+[Permission Model](../../../model-reference/permission-model/index.html){.btn .btn-primary}
 :::
 
 ## `GET` /admin-permissions/id/:id
@@ -977,7 +977,7 @@ Returned when the permission is retrieved successfully.
 }
 ```
 Models used
-[Permission Model](../../model-reference/permission-model/index.html){.btn .btn-primary}
+[Permission Model](../../../model-reference/permission-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -990,7 +990,7 @@ Returned when required parameters are missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 404 Not Found
@@ -1003,7 +1003,7 @@ Returned when the specified permission cannot be found.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## `POST` /admin-permissions/edit/:id
@@ -1045,7 +1045,7 @@ Returned when the permission is updated successfully.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -1058,7 +1058,7 @@ Returned when required parameters are missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 404 Not Found
@@ -1071,7 +1071,7 @@ Returned when the specified permission cannot be found.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 409 Conflict
@@ -1084,7 +1084,7 @@ Returned when a permission with the same name already exists.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 500 Internal Server Error
@@ -1097,7 +1097,7 @@ Returned when an unexpected error occurs while updating the permission.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## `POST` /admin-permissions/add
@@ -1133,7 +1133,7 @@ Returned when the permission is added successfully.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -1146,7 +1146,7 @@ Returned when required parameters are missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 409 Conflict
@@ -1159,7 +1159,7 @@ Returned when a permission with the same name already exists.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 500 Internal Server Error
@@ -1172,7 +1172,7 @@ Returned when an unexpected error occurs while adding the permission.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ## `DELETE` /admin-permissions/delete/:id
@@ -1207,7 +1207,7 @@ Returned when the permission is deleted successfully.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 400 Bad Request
@@ -1220,7 +1220,7 @@ Returned when required parameters are missing.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 404 Not Found
@@ -1233,7 +1233,7 @@ Returned when the specified permission cannot be found.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
 ::: collapsible 500 Internal Server Error
@@ -1246,5 +1246,5 @@ Returned when an unexpected error occurs while deleting the permission.
 }
 ```
 Models used
-[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+[Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
