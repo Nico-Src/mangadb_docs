@@ -103,6 +103,7 @@ module.exports = {
       { title: 'Welcome', path: '/', icon: 'home' },
       { title: 'System', collapsible: true, icon: 'cpu', children: [
         { title: 'Architecture', path: '/system/architecture/' },
+        { title: 'Deployment', path: '/system/deployment/' },
       ] },
       { title: 'Model Reference', collapsible: true, icon: 'book-open', children: [
         { title: 'Base', path: '/model-reference/base-model/', icon: 'layers' },
