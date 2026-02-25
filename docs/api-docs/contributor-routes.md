@@ -7,6 +7,10 @@ description: ""
 
 Returns a paginated list of contributors (authors, artists, etc.) including how many series they are associated with. If available, one random related series is also returned per contributor for preview purposes.
 
+<div class="h3">Authentication</div>
+
+No authentication is required for this endpoint.
+
 <div class="h3">Query Parameters</div>
 
 | Parameter | Type   | Required | Default | Description |
@@ -73,6 +77,10 @@ Models used
 ## `GET` /contributor/slug/:slug
 
 Returns detailed public information about a contributor, including aliases, descriptions, relations, and normalized external links.
+
+<div class="h3">Authentication</div>
+
+No authentication is required for this endpoint.
 
 <div class="h3">Path Parameters</div>
 
@@ -160,6 +168,10 @@ Models used
 
 Returns the slug of a random contributor for the specified client.
 
+<div class="h3">Authentication</div>
+
+No authentication is required for this endpoint.
+
 <div class="h3">Query Parameters</div>
 
 | Parameter | Type | Required | Default | Description |
@@ -209,6 +221,10 @@ Models used
 Returns a paginated list of works (series) associated with a contributor.
 
 Each work is enriched with origin, localized description, tags, alias, and a representative volume.
+
+<div class="h3">Authentication</div>
+
+No authentication is required for this endpoint.
 
 <div class="h3">Path Parameters</div>
 

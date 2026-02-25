@@ -90,6 +90,59 @@ Models used
 [Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
+## --- Profile --- {.category-title data-category="Profile"}
+
+## `GET` /user/me
+
+Returns the authenticated user profile together with lightweight overview stats used by profile views.
+
+<div class="h3">Authentication</div>
+
+This endpoint requires authentication via a **refresh token** stored in cookies.
+
+| Cookie Name  | Required | Description                        |
+|--------------|----------|------------------------------------|
+| refreshToken | Yes      | Refresh token used to authenticate |
+
+<div class="h3">Responses</div>
+
+::: collapsible 200 OK
+Returned when the profile data is retrieved successfully.
+
+```json
+{
+    "id": "string",
+    "slug": "string",
+    "username": "string",
+    "profile_image": "string | null",
+    "registered": "string",
+    "age_verified": "boolean",
+    "image_version": "number",
+    "roles": ["string"],
+    "stats": {
+        "reading_entries": "number",
+        "collection_entries": "number",
+        "list_count": "number"
+    }
+}
+```
+Models used
+[User Model](../../model-reference/user-model/index.html){.btn .btn-primary}
+:::
+
+::: collapsible 404 Not Found
+Returned when the user associated with the refresh token cannot be found.
+
+```json
+{
+    "data": "User not found",
+    "code": 404
+}
+```
+Models used
+[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+:::
+
 ## --- Reading History --- {.category-title data-category="Reading History"}
 
 ## `GET` /user/reading-history
@@ -350,7 +403,7 @@ This endpoint requires authentication via a **refresh token** stored in cookies.
 |--------------|----------|------------------------------------|
 | refreshToken | Yes      | Refresh token used to authenticate |
 
-<div class="h3">Path Pparameters</div>
+<div class="h3">Path Parameters</div>
 
 | Parameter | Type   | Required | Description              |
 |-----------|--------|----------|--------------------------|

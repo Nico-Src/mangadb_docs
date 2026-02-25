@@ -85,6 +85,10 @@ Models used
 
 Returns the slug of a volume relative to the current volume position within a series. This endpoint is primarily used for **sequential navigation** (jump-to-index) across volumes while respecting language, edition, and special flags.
 
+<div class="h3">Authentication</div>
+
+No authentication is required for this endpoint.
+
 <div class="h3">Path Parameters</div>
 
 | Parameter | Type   | Required | Description |

@@ -57,6 +57,10 @@ Models used
 
 Returns a user’s profile image at the requested resolution. If no custom profile image exists, a default image is returned.
 
+<div class="h3">Authentication</div>
+
+No authentication is required for this endpoint.
+
 <div class="h3">Path Parameters</div>
 
 | Parameter | Type   | Required | Description            |

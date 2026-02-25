@@ -7,6 +7,10 @@ description: ""
 
 Authenticates a user using a username and password, then issues JWT tokens for session management.
 
+<div class="h3">Authentication</div>
+
+No authentication is required for this endpoint.
+
 <div class="h3">Rate Limiting</div>
 
 This endpoint is protected by rate limiting. After 10 failed login attempts within a 15-minute window (configurable in the backend), further attempts are temporarily blocked.
@@ -97,6 +101,10 @@ Models used
 ## `POST` /auth/register
 
 Registers a new user account using a username and password.
+
+<div class="h3">Authentication</div>
+
+No authentication is required for this endpoint.
 
 <div class="h3">Rate Limiting</div>
 
