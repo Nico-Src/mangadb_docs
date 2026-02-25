@@ -139,6 +139,7 @@ module.exports = {
           { title: 'Media', path: '/api-docs/admin-routes/media-management/', icon: 'image-plus' },
         ] },
       ] },
+      { title: 'Content Search Links', icon: 'search', path: '/content-search-links/' },
       // External links:
       { title: 'DigitalOcean', path: 'https://cloud.digitalocean.com/projects/870246cf-9dbb-4f2d-9b71-492827222a17/settings?i=bb1799', icon: 'waves', external: true },
       { title: 'Cloudflare', path: 'https://dash.cloudflare.com/36f277f32e2702e204925f3ff9b2b0a3/workers-and-pages', icon: 'cloud', external: true },

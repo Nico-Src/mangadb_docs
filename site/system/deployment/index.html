@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      <meta name="description" content="Manga-DB Documentation - A comprehensive guide to using and developing with Manga-DB.">
-  <link rel="canonical" href="/api-docs/auth-routes/">
-  <meta property="og:title" content="Auth Routes | MangaDB">
-  <meta property="og:description" content="Manga-DB Documentation - A comprehensive guide to using and developing with Manga-DB.">
-  <meta property="og:url" content="/api-docs/auth-routes/">
+      <meta name="description" content="Deployment guide for frontend and backend services">
+  <link rel="canonical" href="/system/deployment/">
+  <meta property="og:title" content="Deployment | MangaDB">
+  <meta property="og:description" content="Deployment guide for frontend and backend services">
+  <meta property="og:url" content="/system/deployment/">
   <meta property="og:site_name" content="MangaDB">
   <meta property="og:image" content="/assets/images/docmd-preview.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Auth Routes | MangaDB">
-  <meta name="twitter:description" content="Manga-DB Documentation - A comprehensive guide to using and developing with Manga-DB.">
+  <meta name="twitter:title" content="Deployment | MangaDB">
+  <meta name="twitter:description" content="Deployment guide for frontend and backend services">
   <meta name="twitter:image" content="/assets/images/docmd-preview.png">
  
 
-    <title>Auth Routes : MangaDB</title>
+    <title>Deployment : MangaDB</title>
     
 
       <link rel="icon" href="../../assets/favicon.png" type="image/x-icon" sizes="any">
@@ -126,7 +126,7 @@
       
     </li>
     
-    <li class="collapsible" data-nav-id="undefined">
+    <li class="active-parent collapsible" data-nav-id="undefined" aria-expanded="true">
       <a href="#" class="" >
          <svg class="lucide-icon icon-cpu" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M12 20v2" />
@@ -151,7 +151,7 @@
         
       </a>
       
-        <ul class="submenu" style="display: none;">
+        <ul class="submenu" style="display: block;">
           
     <li class="">
       <a href="../../system/architecture/" class="" >
@@ -163,8 +163,8 @@
       
     </li>
     
-    <li class="">
-      <a href="../../system/deployment/" class="" >
+    <li class="active">
+      <a href="../../system/deployment/" class="active" >
         
         <span class="nav-item-title">Deployment</span>
         
@@ -343,7 +343,7 @@
       
     </li>
     
-    <li class="active-parent collapsible" data-nav-id="/api-docs/general" aria-expanded="true">
+    <li class="collapsible" data-nav-id="/api-docs/general">
       <a href="../../api-docs/general" class="" >
          <svg class="lucide-icon icon-code" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="m16 18 6-6-6-6" />
@@ -356,7 +356,7 @@
         
       </a>
       
-        <ul class="submenu" style="display: block;">
+        <ul class="submenu" style="display: none;">
           
     <li class="">
       <a href="../../api-docs/middleware/" class="" >
@@ -387,8 +387,8 @@
       
     </li>
     
-    <li class="active">
-      <a href="../../api-docs/auth-routes/" class="active" >
+    <li class="">
+      <a href="../../api-docs/auth-routes/" class="" >
          <svg class="lucide-icon icon-lock" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
   <path d="M7 11V7a5 5 0 0 1 10 0v4" />
@@ -742,7 +742,7 @@
 </svg>
                 </button>
                 
-                <h1>Auth Routes</h1>
+                <h1>Deployment</h1>
             </div>
             
             <div class="header-right">
@@ -778,404 +778,77 @@
         <main class="content-area">
             <div class="content-layout">
                 <div class="main-content">
-                    <h2 id="post-authlogin"><code>POST</code> /auth/login</h2>
-<p>Authenticates a user using a username and password, then issues JWT tokens for session management.</p>
-<div class="h3">Rate Limiting</div>
-<p>This endpoint is protected by rate limiting. After 10 failed login attempts within a 15-minute window (configurable in the backend), further attempts are temporarily blocked.</p>
-<div class="h3">Request Body</div>
-<p>The request body must be sent as JSON and include the following fields:</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>username</td>
-<td>string</td>
-<td>Yes</td>
-<td>The user’s username</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>Yes</td>
-<td>The user’s plain-text password</td>
-</tr>
-</tbody>
-</table>
-</div><div class="h4">Example</div>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">&quot;username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;exampleUser&quot;</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">&quot;password&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;securePassword123&quot;</span>
-<span class="hljs-punctuation">}</span>
+                    <h1 id="deployment">Deployment</h1>
+<p>This guide describes the deployment process for both the <strong>frontend</strong> and <strong>backend</strong> services.</p>
+<h2 id="frontend-deployment">Frontend Deployment</h2>
+<p>The frontend is deployed via Cloudflare Workers using a statically generated build.</p>
+<h3 id="step-1-generate-production-build">Step 1 — Generate Production Build</h3>
+<p>Run the generate command:</p>
+<pre class="hljs"><code>npm run generate
 </code></pre>
-<div class="h3">Responses</div>
-<details class="docmd-container collapsible" >
-          <summary class="collapsible-summary">
-            <span class="collapsible-title">200 OK</span>
-            <span class="collapsible-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
-            </span>
-          </summary>
-          <div class="collapsible-content"><p>Returned when the user is authenticated successfully.</p>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;accessToken&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&lt;jwt-access-token&gt;&quot;</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;user&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
-        <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;string&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">&quot;username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;string&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">&quot;profile_image&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;string | null&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">&quot;registered&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;string&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">&quot;age_verified&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;number&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">&quot;slug&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;string&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">&quot;roles&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-comment">/* See model for reference */</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">&quot;permissions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-comment">/* See model for reference */</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-punctuation">}</span>
-<span class="hljs-punctuation">}</span>
+<p>⚠️ <strong>Important:</strong><br>
+Ensure the <code>.env</code> variable <code>ENV</code> is <strong>not set to <code>local</code></strong>, otherwise the generated build will use local backend URLs.</p>
+<p>Example:</p>
+<pre class="hljs"><code>ENV=production
 </code></pre>
-<p>Models used<br>
-<a href="../../model-reference/user-model/" class="btn btn-primary">User Model</a><br>
-<a href="../../model-reference/role-model/" class="btn btn-primary">Role Model</a><br>
-<a href="../../model-reference/permission-model/" class="btn btn-primary">Permission Model</a></p>
-</div></details>
-<details class="docmd-container collapsible" >
-          <summary class="collapsible-summary">
-            <span class="collapsible-title">400 Bad Request</span>
-            <span class="collapsible-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
-            </span>
-          </summary>
-          <div class="collapsible-content"><p>Returned when required request parameters are missing.</p>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Required parameters missing&quot;</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">400</span>
-<span class="hljs-punctuation">}</span>
+<h3 id="step-2-upload-build-to-cloudflare">Step 2 — Upload Build to Cloudflare</h3>
+<p>Upload the contents of the generated output folder to your Cloudflare Worker deployment.</p>
+<p>Typically this is the <code>.output/public</code> or <code>dist</code> folder, depending on your project configuration.</p>
+<h2 id="backend-deployment">Backend Deployment</h2>
+<p>The backend runs on the server and is managed using <strong>PM2</strong>.</p>
+<h3 id="step-1-upload-updated-files">Step 1 — Upload Updated Files</h3>
+<p>Using <strong>FileZilla</strong> (or another SFTP client), upload all updated backend files <strong>except</strong>:</p>
+<ul>
+<li><code>.env</code></li>
+<li><code>node_modules</code></li>
+<li><code>media</code> directory</li>
+</ul>
+<p>These should remain unchanged on the server.</p>
+<h3 id="step-2-install-new-dependencies-if-needed">Step 2 — Install New Dependencies (if needed)</h3>
+<p>If new dependencies were added, run:</p>
+<pre class="hljs"><code>npm install
 </code></pre>
-<p>Models used<br>
-<a href="../../model-reference/response-model/" class="btn btn-primary">Response Model</a></p>
-</div></details>
-<details class="docmd-container collapsible" >
-          <summary class="collapsible-summary">
-            <span class="collapsible-title">401 Unauthorized</span>
-            <span class="collapsible-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
-            </span>
-          </summary>
-          <div class="collapsible-content"><p>Returned when the username does not exist or the password is incorrect.</p>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Invalid credentials&quot;</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">401</span>
-<span class="hljs-punctuation">}</span>
+<p>on the server.</p>
+<h3 id="step-3-restart-backend-services">Step 3 — Restart Backend Services</h3>
+<p>Restart backend processes using PM2:</p>
+<pre class="hljs"><code>pm2 restart all
 </code></pre>
-<p>Models used<br>
-<a href="../../model-reference/response-model/" class="btn btn-primary">Response Model</a></p>
-</div></details>
-<details class="docmd-container collapsible" >
-          <summary class="collapsible-summary">
-            <span class="collapsible-title">429 Too Many Requests</span>
-            <span class="collapsible-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
-            </span>
-          </summary>
-          <div class="collapsible-content"><p>Returned when too many failed login attempts are made within a short period of time. The client is temporarily blocked from making further login requests.</p>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Too many requests.&quot;</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">429</span>
-<span class="hljs-punctuation">}</span>
+<p>or restart a specific service if required:</p>
+<pre class="hljs"><code>pm2 restart &lt;service-name&gt;
 </code></pre>
-<p>Models used<br>
-<a href="../../model-reference/response-model/" class="btn btn-primary">Response Model</a></p>
-</div></details>
-<h2 id="post-authregister"><code>POST</code> /auth/register</h2>
-<p>Registers a new user account using a username and password.</p>
-<div class="h3">Rate Limiting</div>
-<p>This endpoint is protected by rate limiting. After 10 register attempts within a 1-hour window (configurable in the backend), further attempts are temporarily blocked.</p>
-<div class="h3">Request Body</div>
-<p>The request body must be sent as JSON and include the following fields:</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>username</td>
-<td>string</td>
-<td>Yes</td>
-<td>Desired username</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>Yes</td>
-<td>Plain-text account password</td>
-</tr>
-</tbody>
-</table>
-</div><p>During registration, the backend validates both the username and password against rules defined in the backend configuration. The username must be a string that falls within the allowed length range and matches the permitted character set, ensuring only valid characters are accepted. The password is also validated to confirm it is a string and meets the configured length requirements. If any of these checks fail, the registration request is rejected with a validation error.</p>
-<div class="h4">Example</div>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">&quot;username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;new_user&quot;</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">&quot;password&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;strongPassword123&quot;</span>
-<span class="hljs-punctuation">}</span>
+<h2 id="deployment-checklist">Deployment Checklist</h2>
+<p>Before finishing deployment, verify:</p>
+<ul>
+<li>Frontend loads correctly</li>
+<li>API endpoints respond</li>
+<li>Backend services are running</li>
+<li>No errors appear in PM2 logs</li>
+</ul>
+<p>View logs with:</p>
+<pre class="hljs"><code>pm2 logs
 </code></pre>
-<div class="h3">Responses</div>
-<details class="docmd-container collapsible" >
-          <summary class="collapsible-summary">
-            <span class="collapsible-title">201 Created</span>
-            <span class="collapsible-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
-            </span>
-          </summary>
-          <div class="collapsible-content"><p>Returned when the user account is created successfully.</p>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;User created successfully&quot;</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">201</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-<p>Models used<br>
-<a href="../../model-reference/response-model/" class="btn btn-primary">Response Model</a></p>
-</div></details>
-<details class="docmd-container collapsible" >
-          <summary class="collapsible-summary">
-            <span class="collapsible-title">400 Bad Request</span>
-            <span class="collapsible-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
-            </span>
-          </summary>
-          <div class="collapsible-content"><p>Returned when required request parameters are missing.</p>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Required parameters missing&quot;</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">400</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-<p>Models used<br>
-<a href="../../model-reference/response-model/" class="btn btn-primary">Response Model</a></p>
-</div></details>
-<details class="docmd-container collapsible" >
-          <summary class="collapsible-summary">
-            <span class="collapsible-title">409 Conflict</span>
-            <span class="collapsible-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
-            </span>
-          </summary>
-          <div class="collapsible-content"><p>Returned when the requested username is already in use.</p>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Username already taken&quot;</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">409</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-<p>Models used<br>
-<a href="../../model-reference/response-model/" class="btn btn-primary">Response Model</a></p>
-</div></details>
-<details class="docmd-container collapsible" >
-          <summary class="collapsible-summary">
-            <span class="collapsible-title">422 Unprocessable Entity</span>
-            <span class="collapsible-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
-            </span>
-          </summary>
-          <div class="collapsible-content"><p>Returned when the username or password does not meet validation requirements.</p>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Invalid username&quot;</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">422</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Invalid password&quot;</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">422</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-<p>Models used<br>
-<a href="../../model-reference/response-model/" class="btn btn-primary">Response Model</a></p>
-</div></details>
-<details class="docmd-container collapsible" >
-          <summary class="collapsible-summary">
-            <span class="collapsible-title">429 Too Many Requests</span>
-            <span class="collapsible-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
-            </span>
-          </summary>
-          <div class="collapsible-content"><p>Returned when too many failed register attempts are made within a short period of time. The client is temporarily blocked from making further register requests.</p>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Too many requests.&quot;</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">429</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-<p>Models used<br>
-<a href="../../model-reference/response-model/" class="btn btn-primary">Response Model</a></p>
-</div></details>
-<details class="docmd-container collapsible" >
-          <summary class="collapsible-summary">
-            <span class="collapsible-title">500 Internal Server Error</span>
-            <span class="collapsible-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
-            </span>
-          </summary>
-          <div class="collapsible-content"><p>Returned when an internal error occurs during user creation or role assignment.</p>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;User creation failed&quot;</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">500</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;No default role set&quot;</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">500</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-<p>Models used<br>
-<a href="../../model-reference/response-model/" class="btn btn-primary">Response Model</a></p>
-</div></details>
-<h2 id="get-authme"><code>GET</code> /auth/me</h2>
-<p>Validates the current user session using a refresh token and returns the authenticated user context along with a newly issued access token.</p>
-<div class="h3">Authentication</div>
-<p>This endpoint uses the <strong>refresh token</strong> stored in cookies.</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>Cookie Name</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>refreshToken</td>
-<td>Yes</td>
-<td>Refresh token used to validate user</td>
-</tr>
-</tbody>
-</table>
-</div><hr>
-<div class="h3">Responses</div>
-<details class="docmd-container collapsible" >
-          <summary class="collapsible-summary">
-            <span class="collapsible-title">200 OK</span>
-            <span class="collapsible-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
-            </span>
-          </summary>
-          <div class="collapsible-content"><p>Returned when the user is authenticated successfully and the session is valid.</p>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;accessToken&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&lt;jwt-access-token&gt;&quot;</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;user&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
-        <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;string&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">&quot;username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;string&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">&quot;profile_image&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;string | null&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">&quot;registered&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;string&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">&quot;age_verified&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;number&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">&quot;slug&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;string&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">&quot;roles&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-comment">/* See model for reference */</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">&quot;permissions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-comment">/* See model for reference */</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-attr">&quot;settings&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-comment">/* User-specific settings */</span> <span class="hljs-punctuation">}</span>
-    <span class="hljs-punctuation">}</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-<p>Models used<br>
-<a href="../../model-reference/user-model/" class="btn btn-primary">User Model</a><br>
-<a href="../../model-reference/role-model/" class="btn btn-primary">Role Model</a><br>
-<a href="../../model-reference/permission-model/" class="btn btn-primary">Permission Model</a></p>
-</div></details>
-<details class="docmd-container collapsible" >
-          <summary class="collapsible-summary">
-            <span class="collapsible-title">401 Unauthorized</span>
-            <span class="collapsible-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
-            </span>
-          </summary>
-          <div class="collapsible-content"><p>Returned when the refresh token is missing, invalid, or does not resolve to a user.</p>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Unauthorized&quot;</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">401</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-<p>Models used<br>
-<a href="../../model-reference/response-model/" class="btn btn-primary">Response Model</a></p>
-</div></details>
-<h2 id="post-authlogout"><code>POST</code> /auth/logout</h2>
-<p>Logs out the currently authenticated user by invalidating the refresh token and clearing the authentication cookie.</p>
-<div class="h3">Authentication</div>
-<p>This endpoint uses the <strong>refresh token</strong> stored in cookies.</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>Cookie Name</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>refreshToken</td>
-<td>Yes</td>
-<td>Refresh token used to identify user</td>
-</tr>
-</tbody>
-</table>
-</div><hr>
-<div class="h3">Responses</div>
-<details class="docmd-container collapsible" >
-          <summary class="collapsible-summary">
-            <span class="collapsible-title">200 OK</span>
-            <span class="collapsible-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
-            </span>
-          </summary>
-          <div class="collapsible-content"><p>Returned when the user is logged out successfully.</p>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Logged out&quot;</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">200</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-<p>Models used<br>
-<a href="../../model-reference/response-model/" class="btn btn-primary">Response Model</a></p>
-</div></details>
-<details class="docmd-container collapsible" >
-          <summary class="collapsible-summary">
-            <span class="collapsible-title">401 Unauthorized</span>
-            <span class="collapsible-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
-            </span>
-          </summary>
-          <div class="collapsible-content"><p>Returned when the refresh token is missing or invalid.</p>
-<pre class="hljs"><code><span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Unauthorized&quot;</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">401</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
-<p>Models used<br>
-<a href="../../model-reference/response-model/" class="btn btn-primary">Response Model</a></p>
-</div></details>
 
                     
                     
                     <div class="page-navigation">
                         
-                        <a href="../../api-docs/cdn-routes/" class="prev-page">
+                        <a href="../../system/architecture/" class="prev-page">
                             <svg class="lucide-icon icon-arrow-left page-nav-icon" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="m12 19-7-7 7-7" />
   <path d="M19 12H5" />
 </svg>
                             <span>
                                 <small>Previous</small>
-                                <strong>CDN</strong>
+                                <strong>Architecture</strong>
                             </span>
                         </a>
                         
                         
                         
-                        <a href="../../api-docs/user-routes/" class="next-page">
+                        <a href="../../model-reference/base-model/" class="next-page">
                             <span>
                                 <small>Next</small>
-                                <strong>User</strong>
+                                <strong>Base</strong>
                             </span>
                             <svg class="lucide-icon icon-arrow-right page-nav-icon" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path d="M5 12h14" />
@@ -1187,7 +860,7 @@
                     
                 </div>
                 
-                <!-- DEBUG: {"headingsLength":4} -->
+                <!-- DEBUG: {"headingsLength":9} -->
                 
                 <!-- TOC sidebar -->
                 <div class="toc-sidebar">
@@ -1201,19 +874,35 @@
     <ul class="toc-list">
       
         <li class="toc-item toc-level-2">
-          <a href="#post-authlogin" class="toc-link">POST /auth/login</a>
+          <a href="#frontend-deployment" class="toc-link">Frontend Deployment</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#step-1-generate-production-build" class="toc-link">Step 1 — Generate Production Build</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#step-2-upload-build-to-cloudflare" class="toc-link">Step 2 — Upload Build to Cloudflare</a>
         </li>
       
         <li class="toc-item toc-level-2">
-          <a href="#post-authregister" class="toc-link">POST /auth/register</a>
+          <a href="#backend-deployment" class="toc-link">Backend Deployment</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#step-1-upload-updated-files" class="toc-link">Step 1 — Upload Updated Files</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#step-2-install-new-dependencies-if-needed" class="toc-link">Step 2 — Install New Dependencies (if needed)</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#step-3-restart-backend-services" class="toc-link">Step 3 — Restart Backend Services</a>
         </li>
       
         <li class="toc-item toc-level-2">
-          <a href="#get-authme" class="toc-link">GET /auth/me</a>
-        </li>
-      
-        <li class="toc-item toc-level-2">
-          <a href="#post-authlogout" class="toc-link">POST /auth/logout</a>
+          <a href="#deployment-checklist" class="toc-link">Deployment Checklist</a>
         </li>
       
     </ul>
