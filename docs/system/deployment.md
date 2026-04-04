@@ -5,156 +5,204 @@ description: "Deployment guide for frontend and backend services"
 
 # Deployment
 
-This guide describes the deployment process for both the **frontend** and **backend** services.
+The system is split into two deployment targets:
 
-## Frontend Deployment
-
-The frontend is deployed via Cloudflare Workers using a statically generated build.
-
-### Step 1 — Generate Production Build
-
-Run the generate command:
-
-```bash
-npm run generate
-````
-
-⚠️ **Important:**
-Ensure the `.env` variable `ENV` is **not set to `local`**, otherwise the generated build will use local backend URLs.
-
-Example:
-
-```env
-ENV=production
-```
-
-### Step 2 — Upload Build to Cloudflare
-
-Upload the contents of the generated output folder to your Cloudflare Worker deployment.
-
-Typically this is the `.output/public` or `dist` folder, depending on your project configuration.
-
-## Frontend Deployment
-
-The frontend is deployed via **Cloudflare Pages** using an automatically triggered build.
-
-Deployments run automatically whenever a commit is pushed to the **`dev` branch**.
+- **Frontend** — Cloudflare Pages (SSR via Cloudflare Workers)
+- **Backend** — Docker Compose on a virtual server
 
 ---
 
-### Step 1 — Configure Environment Variables
+## Frontend Deployment (Cloudflare Pages)
 
-Make sure the `.env` variable `ENV` is **not set to `local`**, otherwise the build will use local backend URLs.
+The frontend is deployed via **Cloudflare Pages** with server-side rendering (SSR) powered by Cloudflare Workers.
 
-Example:
+### Zones
+
+There are two Cloudflare Pages projects:
+
+| Zone | Branch | Trigger |
+|---|---|---|
+| **prod-zone** | `main` | Push to `main` |
+| **dev-zone** | `development` | Push to `development` |
+
+Each zone automatically builds and deploys when a commit is pushed to its configured branch.
+
+### Environment Variables
+
+Set these in **Cloudflare Pages → Project Settings → Environment Variables** for each zone:
+
+| Variable | Value |
+|---|---|
+| `NUXT_PUBLIC_API_BASE` | `https://api.manga-db.org` |
+| `NUXT_PUBLIC_FILE_BASE` | `https://io.manga-db.org` |
+| `NUXT_PUBLIC_CDN_BASE` | `https://cdn.manga-db.org` |
+| `NITRO_PRESET` | `cloudflare-pages` |
+
+> **Important:** Do not set `ENV=local` — this would override the API URLs to `localhost`.
+
+### Build Configuration
+
+| Setting | Value |
+|---|---|
+| **Framework preset** | Nuxt.js |
+| **Root directory** | `frontend/mangalib_4` |
+| **Build command** | `npm run build` |
+| **Build output directory** | `dist` |
+
+### Deployment Process
+
+1. Push code to `development` (dev-zone) or `main` (prod-zone)
+2. Cloudflare Pages automatically:
+   - Pulls the latest commit
+   - Installs dependencies
+   - Builds the Nuxt app with `NITRO_PRESET=cloudflare-pages`
+   - Deploys the SSR output to Cloudflare Workers
+3. The site is live at `manga-db.org` (prod) with full server-side rendering
+
+No manual build or upload is required.
+
+---
+
+## Backend Deployment (Docker)
+
+All backend services run as Docker containers on the virtual server, managed by Docker Compose.
+
+### Services
+
+| Container | Image | Role | Internal Port |
+|---|---|---|---|
+| `api` | `mangalib-backend` | REST API | 4545 |
+| `io` | `mangalib-backend` | File upload/serving | 4546 |
+| `cdn` | `mangalib-backend` | Image delivery + caching | 5555 |
+| `mariadb` | `mariadb:10.4` | Database | 3306 |
+| `phpmyadmin` | `phpmyadmin:latest` | DB admin UI | 80 |
+| `nginx` | `nginx:alpine` | Reverse proxy + SSL | 80, 443 |
+
+The `api`, `io`, and `cdn` containers share the same Docker image (`mangalib-backend`) but run with different commands.
+
+### Server Directory Structure
+
+```
+/root/mangadb/
+├── docker-compose.yml
+├── .env                         # Secrets (not in git)
+├── .dockerignore
+├── docker/
+│   ├── backend.Dockerfile
+│   ├── frontend.Dockerfile      # Kept for reference (not used in compose)
+│   └── nginx/
+│       ├── nginx.conf
+│       └── certs/
+│           ├── api.pem          # Cloudflare origin certificate
+│           └── api.key          # Cloudflare origin key
+├── backend + image-cdn + scraper/
+└── frontend/
+    └── mangalib_4/              # Only needed if building frontend locally
+```
+
+### Environment Variables
+
+The `.env` file at the project root (not committed to git):
 
 ```env
-ENV=production
+DB_ROOT_PASSWORD=<MariaDB root password>
+DB_PASS=<MariaDB mangadb user password>
+MEDIA_PATH=/root/mangadb_api/media
 ```
 
-Set this environment variable inside **Cloudflare Pages → Project Settings → Environment Variables**.
+### SSL Certificates
 
-### Step 2 — Nuxt Configuration Requirements
-
-Before deploying, verify your Nuxt configuration:
-
-* `baseURL` must be **removed** from `nuxt.config.ts` (do not set it for production deployments on Cloudflare Pages).
-* The app must use the default root path (`/`).
-
-Example (correct):
-
-```ts
-app: {
-  head: {
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
-    ]
-  }
-}
-```
-
-### Step 3 — Automatic Deployment
-
-Cloudflare Pages automatically:
-
-1. Pulls the latest commit from the `dev` branch
-2. Installs dependencies
-3. Builds the project
-4. Deploys the generated output
-
-No manual upload is required.
-
-### Manual Static Deployment
-
-.htaccess is needed for dynamic pages like series detail or volume detail paste this into it:
+Cloudflare origin certificates are stored in `docker/nginx/certs/`:
 
 ```
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-
-  RewriteRule ^index\.html$ - [L]
-
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-
-  RewriteRule . /index.html [L]
-</IfModule>
+docker/nginx/certs/api.pem
+docker/nginx/certs/api.key
 ```
 
-### Build Output
-
-Cloudflare Pages will automatically use the generated static output (`.output/public` or `dist`, depending on your Nuxt setup). No manual handling is necessary.
-
-## Backend Deployment
-
-The backend runs on the server and is managed using **PM2**.
-
-### Step 1 — Upload Updated Files
-
-Using **FileZilla** (or another SFTP client), upload all updated backend files **except**:
-
-* `.env`
-* `node_modules`
-* `media` directory
-
-These should remain unchanged on the server.
-
-### Step 2 — Install New Dependencies (if needed)
-
-If new dependencies were added, run:
+Copy from the server's existing location:
 
 ```bash
-npm install
+cp /etc/ssl/cloudflare/api.pem /root/mangadb/docker/nginx/certs/api.pem
+cp /etc/ssl/cloudflare/api.key /root/mangadb/docker/nginx/certs/api.key
 ```
 
-on the server.
+### Deploying Code Changes
 
-### Step 3 — Restart Backend Services
-
-Restart backend processes using PM2:
+After pushing updated backend code to the server:
 
 ```bash
-pm2 restart all
+cd /root/mangadb
+docker compose up --build -d
 ```
 
-or restart a specific service if required:
+This rebuilds only changed images and restarts affected containers. Data volumes (database, media, logs) are preserved.
+
+To update a single service without rebuilding:
 
 ```bash
-pm2 restart <service-name>
+docker compose restart api
 ```
+
+### Nginx Reverse Proxy
+
+Nginx handles SSL termination and routes traffic to the correct container:
+
+| Subdomain | Target |
+|---|---|
+| `api.manga-db.org` | `api:4545` (HTTPS) |
+| `io.manga-db.org` | `io:4546` (HTTPS) |
+| `cdn.manga-db.org` | `cdn:5555` (HTTP) |
+| `db.manga-db.org` | `phpmyadmin:80` (HTTPS) |
+
+`manga-db.org` is handled directly by Cloudflare Pages — no nginx proxy needed.
+
+### Volumes
+
+| Volume | Purpose | Persists across restarts |
+|---|---|---|
+| `db_data` | MariaDB database files | Yes |
+| `backend_logs` | Backend log files | Yes |
+| `MEDIA_PATH` (bind mount) | Uploaded images, covers, etc. | Yes (host filesystem) |
+
+> **Warning:** `docker compose down -v` deletes named volumes (`db_data`, `backend_logs`). Never use the `-v` flag unless you intend to destroy data.
+
+---
+
+## Useful Commands
+
+```bash
+# View logs (all services)
+docker compose logs -f
+
+# View logs (single service)
+docker compose logs -f api
+
+# Restart a single service
+docker compose restart api
+
+# Rebuild and restart after code changes
+docker compose up --build -d
+
+# Force full rebuild (no cache) — required after base image or dependency changes
+docker compose build --no-cache
+docker compose up -d
+
+# Stop all services (data preserved)
+docker compose down
+
+# Check running containers
+docker compose ps
+```
+
+---
 
 ## Deployment Checklist
 
-Before finishing deployment, verify:
+After deploying, verify:
 
-* Frontend loads correctly
-* API endpoints respond
-* Backend services are running
-* No errors appear in PM2 logs
-
-View logs with:
-
-```bash
-pm2 logs
-```
+- [ ] Frontend loads at `https://manga-db.org` (check view-source for SSR HTML)
+- [ ] API responds at `https://api.manga-db.org/api/series?page=1`
+- [ ] File service responds at `https://io.manga-db.org`
+- [ ] CDN serves images at `http://cdn.manga-db.org`
+- [ ] phpMyAdmin loads at `https://db.manga-db.org`
+- [ ] No errors in `docker compose logs`
