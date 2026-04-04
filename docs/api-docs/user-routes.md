@@ -3,6 +3,56 @@ title: "User Routes"
 description: ""
 ---
 
+## `GET` /users
+
+Returns a paginated list of publicly visible user profiles. This endpoint is used for the browse-users page and does not expose sensitive information such as roles or lock status.
+
+<div class="h3">Authentication</div>
+
+This endpoint does **not** require authentication.
+
+<div class="h3">Query Parameters</div>
+
+| Parameter | Type   | Required | Default     | Description                                      |
+|-----------|--------|----------|-------------|--------------------------------------------------|
+| order     | string | No       | `name-asc`  | Sorting order                                    |
+| limit     | number | No       | `44`        | Maximum number of users to return                |
+| offset    | number | No       | `0`         | Number of users to skip (pagination)             |
+| search    | string | No       | `undefined` | Search term applied to username                  |
+
+<div class="h4">Enum Values</div>
+
+**order**
+- `name-asc`
+- `name-desc`
+- `registered-asc`
+- `registered-desc`
+
+<div class="h3">Responses</div>
+
+::: collapsible 200 OK
+Returned when the user list is retrieved successfully.
+
+```json
+{
+    "users": [
+        {
+            "id": "number",
+            "slug": "string",
+            "username": "string",
+            "profile_image": "string | null",
+            "registered": "string",
+            "image_version": "number"
+        }
+    ],
+    "max": "number",
+    "count": "number"
+}
+```
+Models used
+[User Model](../../model-reference/user-model/index.html){.btn .btn-primary}
+:::
+
 ## `POST` /users/:id/save-settings
 
 Creates or updates user-specific settings for the specified user. If a settings record already exists, it is updated; otherwise, a new record is created.
@@ -168,18 +218,23 @@ This endpoint requires authentication via a **refresh token** stored in cookies.
 | user_lang   | string | No       | Preferred language used for localized titles and descriptions               |
 | client      | string | No       | Client identifier used for client-specific filtering or behavior            |
 
-<div class="h3">Supported Ordering Values</div>
+<div class="h4">Enum Values</div>
 
-The `order` parameter supports the following values:
+**order**
+- `name-asc`
+- `name-desc`
+- `update-asc`
+- `update-desc`
+- `priority-asc`
+- `priority-desc`
+- `score-asc`
+- `score-desc`
+- `start-date-asc`
+- `start-date-desc`
+- `end-date-asc`
+- `end-date-desc`
 
-- `name-asc`, `name-desc`
-- `update-asc`, `update-desc`
-- `priority-asc`, `priority-desc`
-- `score-asc`, `score-desc`
-- `start-date-asc`, `start-date-desc`
-- `end-date-asc`, `end-date-desc`
-
-If no order is provided, the default ordering behavior is applied (```update-desc```).
+If no order is provided, the default ordering behavior is applied (`update-desc`).
 
 <div class="h3">Responses</div>
 
@@ -200,6 +255,69 @@ Models used
 
 ::: collapsible 404 Not Found
 Returned when the user associated with the refresh token cannot be found.
+
+```json
+{
+    "data": "User not found",
+    "code": 404
+}
+```
+Models used
+[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+:::
+
+## `GET` /user/reading-history/stats/general
+
+Returns general statistics about the authenticated user's reading history, including counts by status, total rereads, and average score.
+
+<div class="h3">Authentication</div>
+
+This endpoint requires authentication via a **refresh token** stored in cookies.
+
+| Cookie Name  | Required | Description                        |
+|--------------|----------|------------------------------------|
+| refreshToken | Yes      | Refresh token used to authenticate |
+
+<div class="h3">Query Parameters</div>
+
+| Parameter | Type   | Required | Description        |
+|-----------|--------|----------|--------------------|
+| client    | number | Yes      | Client identifier  |
+
+<div class="h3">Responses</div>
+
+::: collapsible 200 OK
+Returned when the reading history statistics are retrieved successfully.
+
+```json
+{
+    "total_read_series": "number",
+    "started_series": "number",
+    "completed_series": "number",
+    "paused_series": "number",
+    "total_rereads": "number",
+    "avg_score": "number",
+    "first_entry": "string | null",
+    "last_entry": "string | null"
+}
+```
+:::
+
+::: collapsible 400 Bad Request
+Returned when required parameters are missing.
+
+```json
+{
+    "data": "Required parameters missing",
+    "code": 400
+}
+```
+Models used
+[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+:::
+
+::: collapsible 404 Not Found
+Returned when the authenticated user cannot be found.
 
 ```json
 {
@@ -301,7 +419,6 @@ This endpoint requires authentication via a **refresh token** stored in cookies.
 | start         | string  | No       | Start date                                       |
 | end           | string  | No       | End date                                         |
 | notes         | string  | No       | User notes                                       |
-| client        | string  | Yes      | Client identifier                                |
 
 <div class="h4">Enum Values</div>
 
@@ -423,7 +540,6 @@ This endpoint requires authentication via a **refresh token** stored in cookies.
 | start         | string  | No       | Start date                                       |
 | end           | string  | No       | End date                                         |
 | notes         | string  | No       | User notes                                       |
-| client        | string  | Yes      | Client identifier                                |
 
 <div class="h4">Enum Values</div>
 
@@ -574,13 +690,15 @@ Models used
 
 ## --- Rating --- {.category-title data-category="Rating"}
 
-## `GET` /user/series-rating/:id
+## `GET` /user/series-rating/id/:id
 
 Returns the authenticated user’s rating for a specific series.
 
 <div class="h3">Authentication</div>
 
-This endpoint requires authentication via a **refresh token** stored in cookies.
+This endpoint requires authentication via a **refresh token** stored in cookies and the appropriate permission.
+
+**Required Permission:** `rate-series`
 
 | Cookie Name  | Required | Description                        |
 |--------------|----------|------------------------------------|
@@ -903,11 +1021,24 @@ This endpoint requires authentication via a **refresh token** stored in cookies.
 | search      | string  | No       | Search term used to filter the collection                    |
 | user_lang   | string  | No       | Preferred language for translated series titles              |
 | client      | number  | Yes      | Client identifier                                            |
+| type        | string  | No       | Filter by content type                                       |
+| language    | string  | No       | Filter by volume language                                    |
+| buy_date_from | string | No     | Filter by earliest purchase date                             |
+| buy_date_to | string  | No       | Filter by latest purchase date                               |
+| price_min   | number  | No       | Filter by minimum price                                      |
+| price_max   | number  | No       | Filter by maximum price                                      |
 
-<div class="h4">Supported Ordering Values</div>
+<div class="h4">Enum Values</div>
 
+**order**
 - `name-asc`
 - `name-desc`
+- `buy-date-asc`
+- `buy-date-desc`
+- `price-asc`
+- `price-desc`
+- `release-date-asc`
+- `release-date-desc`
 
 <div class="h3">Responses</div>
 

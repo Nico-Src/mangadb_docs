@@ -170,7 +170,7 @@ Models used
 [Response Model](../../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
-## `GET` /admin-volumes/groups/{id}
+## `GET` /admin-volumes/groups/:id
 
 Returns all **volume groups** belonging to a specific series, ordered by their series order. This endpoint is used in admin tooling to manage or inspect volume group structure for a series.
 
@@ -858,6 +858,7 @@ This endpoint requires authentication via a **refresh token** stored in cookies 
 | group   | number  | Yes      | —       | ID of the volume group the volume belongs to |
 | edition | number  | No       | `null`  | ID of the publisher edition |
 | language| string  | Yes      | —       | Language of the volume |
+| public  | string  | No       | `undefined` | Set to `"true"` to mark the volume as public |
 
 <div class="h3">Responses</div>
 

@@ -38,7 +38,6 @@ The full lock identifier is constructed internally using the provided `route` an
     "id": "1234"
 }
 ```
-:::
 
 <div class="h3">Responses</div>
 

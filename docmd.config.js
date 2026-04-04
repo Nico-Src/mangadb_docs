@@ -121,6 +121,7 @@ module.exports = {
         { title: 'Middleware', path: '/api-docs/middleware/', icon: 'layers' },
         { title: 'CDN', path: '/api-docs/cdn-routes/', icon: 'cloud-rain' },
         { title: 'Auth', path: '/api-docs/auth-routes/', icon: 'lock' },
+        { title: 'OAuth', path: '/api-docs/oauth-routes/', icon: 'key-round' },
         { title: 'User', path: '/api-docs/user-routes/', icon: 'user' },
         { title: 'Lists', path: '/api-docs/list-routes/', icon: 'list' },
         { title: 'Tags', path: '/api-docs/tag-routes/', icon: 'tag' },

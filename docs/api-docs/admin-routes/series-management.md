@@ -38,6 +38,8 @@ This endpoint requires authentication via a **refresh token** stored in cookies 
 <div class="h3">Responses</div>
 
 ::: collapsible 200 OK
+Returned when the series list is retrieved successfully.
+
 ```json
 {
   "series": [

@@ -105,7 +105,7 @@ This endpoint does **not** require authentication.
 | Parameter | Type   | Required | Default            | Description                                      |
 |-----------|--------|----------|--------------------|--------------------------------------------------|
 | search    | string | Yes      | —                  | Search term matched against names and aliases    |
-| limit     | number | No       | `MAX_SAFE_INT`     | Maximum number of results to return              |
+| limit     | number | No       | `Number.MAX_SAFE_INTEGER`     | Maximum number of results to return              |
 
 <div class="h3">Responses</div>
 
@@ -312,6 +312,57 @@ Models used
 [Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
 :::
 
+## `GET` /series/random
+
+Returns a random series slug for a given client. This endpoint is typically used for discovery features (e.g. "random series" navigation).
+
+<div class="h3">Authentication</div>
+
+This endpoint does **not** require authentication.
+
+<div class="h3">Query Parameters</div>
+
+| Parameter | Type   | Required | Default | Description          |
+|-----------|--------|----------|---------|----------------------|
+| client    | number | Yes      | —       | Client identifier    |
+
+<div class="h3">Responses</div>
+
+::: collapsible 200 OK
+Returned when a random series is successfully selected.
+
+```json
+"series-slug"
+```
+The response is a string representing the series slug.
+:::
+
+::: collapsible 400 Bad Request
+Returned when the required client parameter is missing.
+
+```json
+{
+    "data": "Required parameters missing",
+    "code": 400
+}
+```
+Models used
+[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+:::
+
+::: collapsible 404 Not Found
+Returned when no series can be found for the given client.
+
+```json
+{
+    "data": "Series not found",
+    "code": 404
+}
+```
+Models used
+[Response Model](../../model-reference/response-model/index.html){.btn .btn-primary}
+:::
+
 ## `GET` /series/editions/:id
 
 Returns all publisher editions associated with a specific series.
@@ -428,7 +479,7 @@ This endpoint is **optionally authenticated**.
 |-----------|---------|----------|----------------------|-----------------------------------------------------------------|
 | edition   | string  | Yes      | —                    | Edition identifier or language                                 |
 | special   | boolean | No       | `false`              | Whether to return special volumes only                          |
-| limit     | number  | No       | `MAX_SAFE_INT`       | Maximum number of volumes to return                             |
+| limit     | number  | No       | `Number.MAX_SAFE_INTEGER`       | Maximum number of volumes to return                             |
 | offset    | number  | No       | `0`                  | Number of volumes to skip (pagination)                          |
 
 <div class="h4">Edition Format</div>

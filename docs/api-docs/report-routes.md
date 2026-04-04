@@ -22,7 +22,7 @@ This endpoint requires authentication via a **refresh token** stored in cookies 
 | Parameter | Type   | Required | Default          | Description                                      |
 |-----------|--------|----------|------------------|--------------------------------------------------|
 | order     | string | No       | `added-desc`    | Sorting order of reports                         |
-| limit     | number | No       | `MAX_SAFE_INT`  | Maximum number of reports to return              |
+| limit     | number | No       | `Number.MAX_SAFE_INTEGER`  | Maximum number of reports to return              |
 | offset    | number | No       | `0`             | Number of reports to skip (pagination)           |
 | search    | string | No       | `undefined`     | Search term applied to report content            |
 

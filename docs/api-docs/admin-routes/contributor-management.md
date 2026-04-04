@@ -426,7 +426,7 @@ This endpoint requires authentication via a **refresh token** stored in cookies 
 |-----------|------|----------|-------------|
 | id | number | Yes | Contributor identifier |
 
-<div class="h3">Body Parameters</div>
+<div class="h3">Request Body</div>
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|

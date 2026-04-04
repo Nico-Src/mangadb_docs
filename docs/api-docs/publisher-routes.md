@@ -5,7 +5,7 @@ description: ""
 
 ## `GET` /publishers
 
-Returns a list of publishers for a given client. The result can be filtered, searched, sorted, and paginated. Each publisher includes a count of how many series are associated with it.
+Returns a paginated list of publishers. The result can be searched, sorted, and paginated. Each publisher includes a count of how many series are associated with it.
 
 <div class="h3">Authentication</div>
 
@@ -20,7 +20,6 @@ This endpoint does **not** require authentication.
 | search   | string  | No       | `undefined`               | Search term applied to publisher name |
 | limit    | number  | No       | `Number.MAX_SAFE_INTEGER` | Maximum number of results |
 | offset   | number  | No       | `0`                       | Pagination offset |
-| client   | number  | Yes      | —                         | Client identifier |
 
 <div class="h4">Enum Values</div>
 
@@ -36,22 +35,27 @@ This endpoint does **not** require authentication.
 Returned when the publishers are fetched successfully.
 
 ```json
-[
-  {
-    "id": "number",
-    "name": "string",
-    "short-name": "string",
-    "slug": "string",
-    "country": "string",
-    "website": "string",
-    "headquarter": "string",
-    "series_count": "number",
-    "founding_date": "string",
-    "image": "string",
-    "image_source": "string",
-    "client": "number"
-  }
-]
+{
+  "publishers": [
+    {
+      "id": "number",
+      "name": "string",
+      "short-name": "string",
+      "slug": "string",
+      "country": "string",
+      "website": "string",
+      "headquarter": "string",
+      "series_count": "number",
+      "founding_date": "string",
+      "image": "string",
+      "image_source": "string"
+    }
+  ],
+  "max": "number",
+  "from": "number",
+  "to": "number",
+  "count": "number"
+}
 ```
 Models used
 [Publisher Model](../../model-reference/publisher-model/index.html){.btn .btn-primary}
