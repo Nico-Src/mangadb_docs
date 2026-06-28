@@ -16,16 +16,12 @@ graph TD
     MW --> FE[Frontend SSR<br/>Cloudflare Pages<br/>manga-db.org]
 
     FE -->|API Requests| NGINX[Nginx Reverse Proxy<br/>SSL Termination]
-    FE -->|Media Requests| CDN[CDN<br/>mangadb.b-cdn.net]
+    FE -->|Media Requests| IMG
 
     NGINX -->|api.manga-db.org| API[API Container<br/>Node.js 16<br/>:4545]
     NGINX -->|io.manga-db.org| IO[IO Container<br/>Node.js 16<br/>:4546]
     NGINX -->|cdn.manga-db.org| IMG[CDN Container<br/>Node.js 16<br/>:5555]
-    NGINX -->|db.manga-db.org| PMA[phpMyAdmin<br/>:80]
-
-    CDN -->|Cache Miss → Fetch| IMG
-    CDN -->|Cache Hit → Return| CDN
-    IO -->|Cache Busting| CDN
+    NGINX -->|localhost:8080| PMA[phpMyAdmin<br/>SSH tunnel only]
 
     API --> DB[(MariaDB 10.4<br/>Docker Volume)]
     IO --> DB
@@ -51,9 +47,8 @@ graph TD
 | `api.manga-db.org` | Backend API | Docker → Nginx → `api:4545` |
 | `io.manga-db.org` | File service | Docker → Nginx → `io:4546` |
 | `cdn.manga-db.org` | Image CDN | Docker → Nginx → `cdn:5555` |
-| `mangadb.b-cdn.net` | Public CDN | Bunny Net |
-| `db.manga-db.org` | phpMyAdmin | Docker → Nginx → `phpmyadmin:80` |
 | `status.manga-db.org` | Status page | External monitoring |
+| phpMyAdmin | DB admin UI | SSH tunnel → `localhost:8080` (not public) |
 
 ## Technology Stack Overview
 
@@ -105,12 +100,26 @@ All backend services run as **Docker containers** on a virtual server, orchestra
 
 The `api`, `io`, and `cdn` containers use the same Docker image (`mangalib-backend`) with different commands.
 
-### CDN (Bunny Net)
+### Rate Limiting
 
-- **URL:** `mangadb.b-cdn.net`
-- **Role:** Public-facing CDN that caches images from the origin image service (`cdn.manga-db.org`)
-- On cache miss, fetches from the Docker CDN container
-- The IO service triggers cache busting on Bunny Net when media is updated
+The API applies rate limiting via `express-rate-limit` to protect against abuse:
+
+| Limiter | Scope | Limit |
+|---|---|---|
+| General | All routes | 200 requests / minute per IP |
+| Login | `POST /auth/login` | 10 attempts / 15 min per IP |
+| Register | `POST /auth/register` | 10 attempts / 1 hour per IP |
+
+Limits are configurable via environment variables (`RATE_LIMIT_GENERAL`). The server is configured with `trust proxy: 1` so client IPs are correctly read from the `X-Forwarded-For` header set by Cloudflare.
+
+### phpMyAdmin
+
+phpMyAdmin is **not publicly exposed**. It is bound to `127.0.0.1:8080` inside the Docker network and accessible only via SSH tunnel:
+
+```bash
+ssh -L 8080:localhost:8080 user@server
+# Then open http://localhost:8080 in your browser
+```
 
 ### Status Page
 
@@ -134,7 +143,7 @@ The system uses **MariaDB** as its relational database.
 
 - The **Maintenance Worker** intercepts user requests and forwards them to the frontend when the site is operational
 - The **Nuxt frontend** runs SSR on Cloudflare Workers and communicates with backend Docker services over HTTPS
-- Media and file requests go through the **Bunny Net CDN**, which fetches from the **Docker CDN container** only when content is not cached
+- Media and file requests are served directly by the **Docker CDN container** (`cdn.manga-db.org`), which caches images in-memory
 - **Docker containers** share a compose network and access **MariaDB** via the internal `mariadb` hostname
 - **Nginx** handles SSL termination using Cloudflare origin certificates and routes external traffic to the correct container
 - The **media directory** is bind-mounted from the host filesystem and shared between the `api`, `io`, and `cdn` containers
